@@ -1,0 +1,4 @@
+**/plugged
+nvim/undo/**.*
+**/undo
+.DS_Store

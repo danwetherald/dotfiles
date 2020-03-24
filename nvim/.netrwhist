@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/Users/danwetherald/Developer/BetterCart/better-cart-partners-app/src/components/routes'
+let g:netrw_dirhist_8='/Users/danwetherald/Developer/BetterCart/better-cart-api/app/models'
+let g:netrw_dirhist_7='/Users/danwetherald/Developer/BetterCart/better-cart-api/app'
+let g:netrw_dirhist_6='/Users/danwetherald/Developer/BetterCart/better-cart-api'
+let g:netrw_dirhist_5='/Users/danwetherald/Developer/BetterCart/better-cart-api/app/models'
+let g:netrw_dirhist_4='/Users/danwetherald/Developer/BetterCart/better-cart-api/app'
+let g:netrw_dirhist_3='/Users/danwetherald/Developer/BetterCart/better-cart-api'
+let g:netrw_dirhist_2='/Users/danwetherald/Developer/BetterCart/better-cart-api/app/models'
+let g:netrw_dirhist_1='/Users/danwetherald/Developer/BetterCart/better-cart-api/app'
+let g:netrw_dirhist_0='/Users/danwetherald/Developer/BetterCart/better-cart-api'
