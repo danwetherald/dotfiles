@@ -4,6 +4,10 @@ filetype plugin indent on
 
 set encoding=UTF-8
 
+set termguicolors
+syntax on
+colorscheme dracula
+
 let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 
 hi htmlArg gui=italic
@@ -151,3 +155,7 @@ let g:rg_find_command = 'rg --files --follow  -g "!{.config,etc,node_modules,.gi
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 command! -bang -nargs=* Rg call fzf#vim#files('.', {'source': g:rg_find_command***REMOVED***, 0)
 
+" LightLine Config
+let g:lightline = {
+  \ 'colorscheme': 'dracula'
+\***REMOVED***

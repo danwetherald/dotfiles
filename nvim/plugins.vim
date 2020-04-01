@@ -7,6 +7,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' ***REMOVED***
 Plug 'junegunn/fzf.vim'
 
+Plug 'itchyny/lightline.vim'
+
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' ***REMOVED***
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
@@ -42,7 +44,6 @@ Plug 'gavocanov/vim-js-indent', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED
 
 " Graphql
 Plug 'jparise/vim-graphql'
-
 Plug 'cakebaker/scss-syntax.vim'
 
 " HTML
