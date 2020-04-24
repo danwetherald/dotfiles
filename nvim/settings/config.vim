@@ -1,5 +1,7 @@
 set nocompatible
 
+runtime macros/matchit.vim
+
 filetype plugin indent on
 
 set encoding=UTF-8
@@ -51,8 +53,8 @@ set noswapfile
 set conceallevel=0
 let g:indentLine_conceallevel = 0
 
-set splitbelow
-set splitright
+set splitbelow splitright
+set fillchars+=vert:\ 
 
 set undofile
 set undodir=~/.config/nvim/undo
@@ -145,11 +147,53 @@ let g:prettier#autoformat = 0
 "
 let g:prettier#nvim_unstable_async=1
 
-let g:fzf_layout = { 'down': '~25%' ***REMOVED***
+let $FZF_DEFAULT_OPTS .= ' --border --margin=0,2'
+let $FZF_DEFAULT_COMMAND = 'rg --files --follow -g "!{.config,etc,node_modules,.git,target,.reast,.d,.cm***REMOVED***/*"'
+
+function! FloatingFZF()
+  let width = float2nr(&columns * 0.9)
+  let height = float2nr(&lines * 0.6)
+  let opts = { 'relative': 'editor',
+             \ 'row': (&lines - height) / 2,
+             \ 'col': (&columns - width) / 2,
+             \ 'width': width,
+             \ 'height': height ***REMOVED***
+
+  let win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+  call setwinvar(win, '&winhighlight', 'NormalFloat:Normal')
+***REMOVED***function
+
+" let g:fzf_layout = { 'down': '~25%' ***REMOVED***
+let g:fzf_layout = { 'window': 'call FloatingFZF()' ***REMOVED***
+
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
 
 "Use ripgrep
 let g:ackprg = 'rg --vimgrep --no-heading'
 let g:grepprg='rg --vimgrep'
+
+let g:rg_find_command = 'rg --files --follow  -g "!{.config,etc,node_modules,.git,target,.reast,.d,.cm***REMOVED***/*"'
+
+command! -bang -nargs=* Rg call fzf#vim#files('.', {'source': g:rg_find_command***REMOVED***, 0)
+
+command! -bang -nargs=* Find call fzf#vim#grep(
+  \ 'rg --column --line-number --no-heading --follow --ignore-case --color=always '.<q-args>, 1,
+  \ <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q***REMOVED***')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]***REMOVED***
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+***REMOVED***function
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+command! LS call fzf#run(fzf#wrap({'source': 'ls'***REMOVED***))
 
 let g:rg_find_command = 'rg --files --follow  -g "!{.config,etc,node_modules,.git,target,.reast,.d,.cm***REMOVED***/*"'
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)

@@ -31,6 +31,10 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
+" Ruby
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+
 " Typescript
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'

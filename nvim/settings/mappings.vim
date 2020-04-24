@@ -1,16 +1,20 @@
 " keyboard shortcuts
 
 let mapleader = ','
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-nnoremap <leader>a :Ag<space>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Change split from vertical to horizontal
+noremap <leader>th <C-w>t<C-w>H
+noremap <leader>tv <C-w>t<C-w>K
 
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>t :FZF<CR>
-nnoremap <leader>g :GitGutterToggle<CR>
+nnoremap <leader>r :RG<CR>
+nnoremap <leader>a :Ag<space>
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
@@ -29,6 +33,7 @@ vnoremap <silent> al :<c-u>normal! $v0<cr>
 onoremap <silent> al :<c-u>normal! $v0<cr>
 
 " Git
+nnoremap <leader>g :GitGutterToggle<CR>
 nmap <silent> <leader>gs :Gstatus<cr>
 nmap <leader>ge :Gedit<cr>
 nmap <silent><leader>gr :Gread<cr>
