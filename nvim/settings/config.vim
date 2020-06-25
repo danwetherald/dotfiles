@@ -11,6 +11,7 @@ syntax on
 colorscheme dracula
 
 let g:node_host_prog = '/usr/local/bin/neovim-node-host'
+let g:rustfmt_autosave = 1
 
 hi htmlArg gui=italic
 hi Comment gui=italic
@@ -76,7 +77,7 @@ set linebreak
 autocmd BufRead *.js set filetype=javascript
 autocmd BufRead *.es6 set filetype=javascript
 autocmd BufRead *.jsx set filetype=javascript
-autocmd BufRead *.prisma set filetype=javascript
+" autocmd BufRead *.prisma set filetype=javascript
 
 set mouse=a
 
@@ -135,6 +136,8 @@ autocmd BufNew * wincmd l
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 au BufWrite *.rb :Autoformat
+
+au BufNewFile,BufRead *.prisma setfiletype graphql
 
 " disable quickfix pop up
 let g:prettier#quickfix_enabled = 0

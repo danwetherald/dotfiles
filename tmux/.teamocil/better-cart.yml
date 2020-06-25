@@ -1,0 +1,40 @@
+windows:
+  - name: better-cart-api
+    root: ~/Developer/BetterCart/better-cart-api
+    layout: main-vertical
+    panes:
+      - vim .
+      - rails s
+      - commands:
+          - git pull
+          - git status
+  - name: better-cart-app
+    root: ~/Developer/BetterCart/better-cart-app
+    layout: main-vertical
+    panes:
+      - vim .
+      - yarn start
+      - commands:
+          - git pull
+          - git status
+  - name: better-cart-checkout
+    root: ~/Developer/BetterCart/better-cart-checkout
+    layout: main-vertical
+    panes:
+      - vim .
+      - yarn start
+      - commands:
+          - git pull
+          - git status
+  - name: better-cart-storefront
+    root: ~/Developer/BetterCart/better-cart-storefront
+    layout: main-vertical
+    panes:
+      - vim .
+      - commands:
+          - git pull
+          - git status
+  - name: ngrok
+    root: ~/Developer/BetterCart
+    panes:
+      - ngrok start --all

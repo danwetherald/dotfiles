@@ -35,6 +35,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 
+" Rust
+Plug 'rust-lang/rust.vim'
+
 " Typescript
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
@@ -48,12 +51,12 @@ Plug 'gavocanov/vim-js-indent', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED
 
 " Graphql
 Plug 'jparise/vim-graphql'
-Plug 'cakebaker/scss-syntax.vim'
 
 " HTML
 Plug 'tpope/vim-ragtag'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'skwp/vim-html-escape'
+Plug 'cakebaker/scss-syntax.vim'
 
 Plug 'ryanoasis/vim-devicons'
 
