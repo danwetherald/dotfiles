@@ -73,12 +73,6 @@ set linebreak
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
 
-" force javascript syntax
-autocmd BufRead *.js set filetype=javascript
-autocmd BufRead *.es6 set filetype=javascript
-autocmd BufRead *.jsx set filetype=javascript
-" autocmd BufRead *.prisma set filetype=javascript
-
 set mouse=a
 
 " Fix Cursor in TMUX
@@ -114,41 +108,16 @@ let g:NERDTreeIndicatorMapCustom = {
   \ "Deleted"   : "✖",
   \ "Dirty"     : "✗",
   \ "Clean"     : "✔︎",
-  \ 'Ignored'   : '☒',
   \ "Unknown"   : "?"
   \ ***REMOVED***
 
-let g:LanguageClient_autoStop = 0
-let g:LanguageClient_serverCommands = {
-    \ 'ruby': ['tcp://localhost:7658']
-    \ ***REMOVED***
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
+" autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
+" au BufWrite *.rb :Autoformat
 
 "Auto focus new nerdtree opened file"
 autocmd BufNew * wincmd l
 
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-
-au BufWrite *.rb :Autoformat
-
-au BufNewFile,BufRead *.prisma setfiletype graphql
-
-" disable quickfix pop up
-let g:prettier#quickfix_enabled = 0
-
-" disable auto formatting
-let g:prettier#autoformat = 0
-
-" force async (vim 8+)
-" let g:prettier#exec_cmd_async = 1
-"
-let g:prettier#nvim_unstable_async=1
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 let $FZF_DEFAULT_OPTS .= ' --border --margin=0,2'
 let $FZF_DEFAULT_COMMAND = 'rg --files --follow -g "!{.config,etc,node_modules,.git,target,.reast,.d,.cm***REMOVED***/*"'
@@ -206,3 +175,98 @@ command! -bang -nargs=* Rg call fzf#vim#files('.', {'source': g:rg_find_command*
 let g:lightline = {
   \ 'colorscheme': 'dracula'
 \***REMOVED***
+
+
+" coc {{{
+    let g:coc_global_extensions = [
+    \ 'coc-yaml',
+    \ 'coc-css',
+    \ 'coc-json',
+    \ 'coc-tsserver',
+    \ 'coc-git',
+    \ 'coc-eslint',
+    \ 'coc-tslint-plugin',
+    \ 'coc-pairs',
+    \ 'coc-sh',
+    \ 'coc-vimlsp',
+    \ 'coc-emmet',
+    \ 'coc-prettier',
+    \ 'coc-ultisnips',
+    \ 'coc-explorer',
+    \ 'coc-diagnostic',
+    \ 'coc-tailwindcss',
+    \ 'coc-reason',
+    \ 'coc-tabnine',
+    \ 'coc-solargraph'
+    \ ]
+
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+
+    " coc-prettier
+    command! -nargs=0 Prettier :CocCommand prettier.formatFile
+    nmap <leader>f :CocCommand prettier.formatFile<cr>
+
+    " coc-git
+    nmap [g <Plug>(coc-git-prevchunk)
+    nmap ]g <Plug>(coc-git-nextchunk)
+    nmap gs <Plug>(coc-git-chunkinfo)
+    nmap gu :CocCommand git.chunkUndo<cr>
+
+    nmap <silent> <leader>k :CocCommand explorer<cr>
+
+    "remap keys for gotos
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+    nmap <silent> gh <Plug>(coc-doHover)
+
+    " diagnostics navigation
+    nmap <silent> [c <Plug>(coc-diagnostic-prev)
+    nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+    " rename
+    nmap <silent> <leader>rn <Plug>(coc-rename)
+
+    " Remap for format selected region
+    xmap <leader>f  <Plug>(coc-format-selected)
+    nmap <leader>f  <Plug>(coc-format-selected)
+
+    " organize imports
+    command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+
+    " Use K to show documentation in preview window
+    nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+    function! s:show_documentation()
+        if (index(['vim','help'], &filetype) >= 0)
+            execute 'h '.expand('<cword>')
+        else
+            call CocAction('doHover')
+    ***REMOVED***if
+***REMOVED***function
+
+    "tab completion
+    inoremap <silent><expr> <TAB>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#refresh()
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+    function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+***REMOVED***function
+
+    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+    " position. Coc only does snippet and additional edit on confirm.
+    if exists('*complete_info')
+        inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+    else
+        imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+***REMOVED***if
+
+    " For enhanced <CR> experience with coc-pairs checkout :h coc#on_enter()
+    inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+          \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" ***REMOVED******REMOVED******REMOVED***

@@ -12,16 +12,14 @@ Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' ***REMOVED***
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-Plug 'zxqfl/tabnine-vim'
-
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ ***REMOVED***
 
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/1.x' ***REMOVED***
-
 Plug 'Chiel92/vim-autoformat'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'***REMOVED***
 
 " Comments
 Plug 'tomtom/tcomment_vim'
@@ -48,6 +46,9 @@ Plug 'thinca/vim-textobj-function-javascript',    { 'for': [ 'javascript', 'js',
 Plug '1995eaton/vim-better-javascript-completion', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
 Plug 'chemzqm/vim-jsx-improve', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
 Plug 'gavocanov/vim-js-indent', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
+
+" Reason
+Plug 'reasonml-editor/vim-reason-plus'
 
 " Graphql
 Plug 'jparise/vim-graphql'
