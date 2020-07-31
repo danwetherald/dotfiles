@@ -19,6 +19,7 @@ export ZSH=~/.oh-my-zsh
 #ZSH_THEME="af-magic"
 #ZSH_THEME="agnoster"
 ZSH_THEME=powerlevel10k/powerlevel10k
+TERM=tmux-256color
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -118,7 +119,6 @@ alias python=/usr/local/bin/python3
 #Git Aliases
 alias gbr="git branch | grep -v "master" | xargs git branch -D"
 
-
 #Tmux ALiases
 alias tma='tmux attach -t'
 alias tmd='tmux detach -a'
@@ -130,9 +130,6 @@ alias tmuxl='tmux list-sessions'
 alias gtbc="cd ~/Developer/BetterCart"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# export TERM=xterm-256color-italic
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/opt/ruby/bin:$PATH"
@@ -148,7 +145,6 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 autoload -Uz compinit
 compinit
+
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
-
-eval "$(rbenv init -)"

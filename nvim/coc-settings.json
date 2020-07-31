@@ -21,7 +21,8 @@
     "typescript.tsx",
     "typescriptreact",
     "javascriptreact",
-    "reason"
+    "reason",
+    "ruby"
   ],
   "explorer.icon.enableNerdfont": true,
   "explorer.sources": [
@@ -69,5 +70,10 @@
       "sourceName": "shellcheck"
     ***REMOVED***
   ***REMOVED***,
-  "solargraph.useBundler": true
+  "solargraph.useBundler": false,
+  "solargraph.bundlerPath": "/Users/danwetherald/.rbenv/versions/2.6.5/bin/bundle",
+  "solargraph.autoformat": true,
+  "solargraph.formatting": true,
+  "solargraph.completion": true,
+  "solargraph.hover": true
 ***REMOVED***
