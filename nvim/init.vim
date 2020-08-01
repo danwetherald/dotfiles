@@ -29,7 +29,6 @@ call plug#begin('~/.config/nvim/plugged')
 ***REMOVED***if
 
     set backspace=indent,eol,start " make backspace behave in a sane manner
-    set clipboard=unnamed
 
     if has('mouse')
         set mouse=a
@@ -84,6 +83,7 @@ call plug#begin('~/.config/nvim/plugged')
     set signcolumn=yes
     set shortmess+=c
     set number relativenumber
+    set clipboard=unnamed
 
     " Tab control
     set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
@@ -105,6 +105,7 @@ call plug#begin('~/.config/nvim/plugged')
     set showbreak=↪
 
     set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+
     " switch cursor to line when in insert mode, and block when not
     set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
     \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
@@ -708,7 +709,9 @@ call plug#***REMOVED***()
     " This call must happen after the plug#***REMOVED***() call to ensure
     " that the colorschemes have been loaded
     colorscheme dracula
-    syntax on
+    let g:dracula_colorterm = 0
+
+    syntax enable
     filetype plugin indent on
     " make the highlighting of tabs and other non-text less annoying
     highlight SpecialKey ctermfg=19 guifg=#333333

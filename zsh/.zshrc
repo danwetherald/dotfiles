@@ -18,8 +18,8 @@ export ZSH=~/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="af-magic"
 #ZSH_THEME="agnoster"
-ZSH_THEME=powerlevel10k/powerlevel10k
-TERM=tmux-256color
+export ZSH_THEME=powerlevel10k/powerlevel10k
+export TERM=screen-256color
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
