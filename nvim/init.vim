@@ -538,7 +538,7 @@ call plug#begin('~/.config/nvim/plugged')
         let g:UltiSnipsJumpForwardTrigger="<C-j>"
         let g:UltiSnipsJumpBackwardTrigger="<C-k>"
     " ***REMOVED******REMOVED******REMOVED***
-
+    
     " coc {{{
         Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'***REMOVED***
 
