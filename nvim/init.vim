@@ -13,7 +13,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     set autoread " detect when a file is changed
 
-    set history=1000 " change history to 1000
+    set history=2000 " change history to 2000
     set textwidth=120
 
     set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -60,8 +60,9 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Appearance {{{
     set number " show line numbers
-    set wrap " turn on line wrapping
-    set wrapmargin=8 " wrap lines when coming within n characters from side
+    " set wrap " turn on line wrapping
+    set nowrap
+    " set wrapmargin=8 " wrap lines when coming within n characters from side
     set linebreak " set soft wrapping
     set showbreak=… " show ellipsis at breaking
     set autoindent " automatically set indent of new line
@@ -84,6 +85,7 @@ call plug#begin('~/.config/nvim/plugged')
     set shortmess+=c
     set number relativenumber
     set clipboard=unnamed
+    set splitbelow splitright
 
     " Tab control
     set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
@@ -104,7 +106,8 @@ call plug#begin('~/.config/nvim/plugged')
     set listchars=tab:→\ ,eol:¬,trail:⋅,ext***REMOVED***s:❯,precedes:❮
     set showbreak=↪
 
-    set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+    " Explicitly tell vim that the terminal supports 256 colors
+    set t_Co=256
 
     " switch cursor to line when in insert mode, and block when not
     set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
@@ -117,16 +120,18 @@ call plug#begin('~/.config/nvim/plugged')
 ***REMOVED***if
 
     " enable 24 bit color support if supported
-    if (has("termguicolors"))
-        if (!(has("nvim")))
-            let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-            let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    ***REMOVED***if
+    if has("termguicolors")
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
         set termguicolors
 ***REMOVED***if
 
     " highlight conflicts
     match ErrorMsg '^\(<\|=\|>\)\{7\***REMOVED***\([^=].\+\)\?$'
+
+    " Dev Icons
+    Plug 'ryanoasis/vim-devicons'
 
     " Load colorschemes
     Plug 'dracula/vim', { 'as': 'dracula' ***REMOVED***
@@ -556,7 +561,9 @@ call plug#begin('~/.config/nvim/plugged')
         \ 'coc-tailwindcss',
         \ 'coc-reason',
         \ 'coc-tabnine',
-        \ 'coc-solargraph'
+        \ 'coc-solargraph',
+        \ 'coc-prisma',
+        \ 'coc-html'
         \ ]
 
         autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -642,29 +649,26 @@ call plug#begin('~/.config/nvim/plugged')
         " html5 support
         Plug 'othree/html5.vim', { 'for': 'html' ***REMOVED***
 
-        " mustache support
-        Plug 'mustache/vim-mustache-handlebars'
-
-        "ejs support"
-        Plug 'nikvdp/ejs-syntax', { 'for': ['ejs']***REMOVED***
-
-        " pug / jade support
-        Plug 'digitaltoad/vim-pug', { 'for': ['jade', 'pug'] ***REMOVED***
-
-		" nunjucks support
-        Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'njk' ***REMOVED***
-
-        " liquid support
-        Plug 'tpope/vim-liquid'
+        Plug 'tpope/vim-ragtag'
+        Plug 'AndrewRadev/splitjoin.vim'
+        Plug 'skwp/vim-html-escape'
+        Plug 'cakebaker/scss-syntax.vim'
     " ***REMOVED******REMOVED******REMOVED***
 
     " JavaScript {{{
-        Plug 'othree/yajs.vim', { 'for': [ 'javascript', 'javascript.jsx', 'html' ] ***REMOVED***
-        " Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'] ***REMOVED***
-        Plug 'moll/vim-node', { 'for': 'javascript' ***REMOVED***
-		    Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' ***REMOVED***
-		    Plug 'MaxMEllon/vim-jsx-pretty'
-		    let g:vim_jsx_pretty_highlight_close_tag = 1
+        Plug 'othree/yajs.vim', { 'for': [ 'javascript', 'javascript.jsx', 'html', 'js' ] ***REMOVED***
+        Plug 'mxw/vim-jsx'
+        Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html', 'js'] ***REMOVED***
+        Plug 'moll/vim-node', { 'for': ['javascript', 'js'] ***REMOVED***
+        Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx', 'js'], 'do': 'npm install' ***REMOVED***
+        Plug 'MaxMEllon/vim-jsx-pretty'
+        let g:vim_jsx_pretty_highlight_close_tag = 1
+
+        Plug 'https://github.com/othree/javascript-libraries-syntax.vim', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
+        Plug 'thinca/vim-textobj-function-javascript',    { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
+        Plug '1995eaton/vim-better-javascript-completion', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
+        Plug 'chemzqm/vim-jsx-improve', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
+        Plug 'gavocanov/vim-js-indent', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
     " ***REMOVED******REMOVED******REMOVED***
 
     " ReasonML {{{
@@ -672,8 +676,8 @@ call plug#begin('~/.config/nvim/plugged')
     " ***REMOVED******REMOVED******REMOVED***
 
     " TypeScript {{{
-        Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] ***REMOVED***
-        " Plug 'Shougo/vimproc.vim', { 'do': 'make' ***REMOVED*** TODO what still needs this?
+        Plug 'leafgarland/typescript-vim'
+        Plug 'ianks/vim-tsx'
     " ***REMOVED******REMOVED******REMOVED***
 
     " Styles {{{
@@ -699,8 +703,10 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'elzr/vim-json', { 'for': 'json' ***REMOVED***
         let g:vim_json_syntax_conceal = 0
     " ***REMOVED******REMOVED******REMOVED***
-
-    Plug 'ekalinin/Dockerfile.vim'
+    
+    " Docker {{{
+        Plug 'ekalinin/Dockerfile.vim'
+    " ***REMOVED******REMOVED******REMOVED***
 " ***REMOVED******REMOVED******REMOVED***
 
 call plug#***REMOVED***()
@@ -709,7 +715,7 @@ call plug#***REMOVED***()
     " This call must happen after the plug#***REMOVED***() call to ensure
     " that the colorschemes have been loaded
     colorscheme dracula
-    let g:dracula_colorterm = 0
+    " let g:dracula_colorterm = 0
 
     syntax enable
     filetype plugin indent on
@@ -721,7 +727,7 @@ call plug#***REMOVED***()
     highlight Comment cterm=italic term=italic gui=italic
     highlight htmlArg cterm=italic term=italic gui=italic
     highlight xmlAttrib cterm=italic term=italic gui=italic
-    " highlight Type cterm=italic term=italic gui=italic
+    highlight Type cterm=italic term=italic gui=italic
     highlight Normal ctermbg=none
 " ***REMOVED******REMOVED******REMOVED***
 
