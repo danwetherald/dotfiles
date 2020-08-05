@@ -138,44 +138,10 @@ call plug#begin('~/.config/nvim/plugged')
 
     " LightLine {{{
         Plug 'itchyny/lightline.vim'
+
         let g:lightline = {
-            \   'colorscheme': 'dracula',
-            \   'active': {
-            \       'left': [ [ 'mode', 'paste' ],
-            \               [ 'gitbranch' ],
-            \               [ 'readonly', 'filetype', 'filename' ]],
-            \       'right': [ [ 'percent' ], [ 'lineinfo' ],
-            \               [ 'fileformat', 'fileencoding' ],
-            \               [ 'gitblame', 'currentfunction',  'cocstatus', 'linter_errors', 'linter_warnings' ]]
-            \   ***REMOVED***,
-            \   'component_expand': {
-            \   ***REMOVED***,
-            \   'component_type': {
-            \       'readonly': 'error',
-            \       'linter_warnings': 'warning',
-            \       'linter_errors': 'error'
-            \   ***REMOVED***,
-            \   'component_function': {
-            \       'fileencoding': 'helpers#lightline#fileEncoding',
-            \       'filename': 'helpers#lightline#fileName',
-            \       'fileformat': 'helpers#lightline#fileFormat',
-            \       'filetype': 'helpers#lightline#fileType',
-            \       'gitbranch': 'helpers#lightline#gitBranch',
-            \       'cocstatus': 'coc#status',
-            \       'currentfunction': 'helpers#lightline#currentFunction',
-            \       'gitblame': 'helpers#lightline#gitBlame'
-            \   ***REMOVED***,
-            \   'tabline': {
-            \       'left': [ [ 'tabs' ] ],
-            \       'right': [ [ 'close' ] ]
-            \   ***REMOVED***,
-            \   'tab': {
-            \       'active': [ 'filename', 'modified' ],
-            \       'inactive': [ 'filename', 'modified' ],
-            \   ***REMOVED***,
-            \   'separator': { 'left': '', 'right': '' ***REMOVED***,
-            \   'subseparator': { 'left': '', 'right': '' ***REMOVED***
-        \ ***REMOVED***
+            \ 'colorscheme': 'dracula'
+            \***REMOVED***
     " ***REMOVED******REMOVED******REMOVED***
 " ***REMOVED******REMOVED******REMOVED***
 
@@ -392,17 +358,6 @@ call plug#begin('~/.config/nvim/plugged')
         nmap <leader>st :Startify<cr>
     " ***REMOVED******REMOVED******REMOVED***
 
-    " Close buffers but keep splits
-    Plug 'moll/vim-bbye'
-    nmap <leader>b :Bdelete<cr>
-
-    " Writing in vim {{{{
-        Plug 'junegunn/goyo.vim'
-
-        autocmd! User GoyoEnter nested call helpers#goyo#enter()
-        autocmd! User GoyoLeave nested call helpers#goyo#leave()
-    " ***REMOVED******REMOVED******REMOVED***
-
     " context-aware pasting
     Plug 'sickill/vim-pasta'
 
@@ -540,7 +495,7 @@ call plug#begin('~/.config/nvim/plugged')
     " ***REMOVED******REMOVED******REMOVED***
     
     " coc {{{
-        Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'***REMOVED***
+        Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install() ***REMOVED******REMOVED***
 
         let g:coc_global_extensions = [
         \ 'coc-yaml',
