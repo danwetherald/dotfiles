@@ -1,5 +1,5 @@
 call functions#PlugLoad()
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/dotfiles/nvim/plugged')
 
 " General {{{
     " Abbreviations
@@ -59,17 +59,13 @@ call plug#begin('~/.config/nvim/plugged')
 " ***REMOVED******REMOVED******REMOVED***
 
 " Appearance {{{
-    set number " show line numbers
-    " set wrap " turn on line wrapping
-    set nowrap
-    " set wrapmargin=8 " wrap lines when coming within n characters from side
-    set linebreak " set soft wrapping
-    set showbreak=… " show ellipsis at breaking
-    set autoindent " automatically set indent of new line
     set ttyfast " faster redrawing
+    set nowrap
+    set linebreak
+    set showbreak=↪
     set diffopt+=vertical,iwhite,internal,algorithm:patience,hiddenoff
     set laststatus=2 " show the status line all the time
-    set so=7 " set 7 lines to the cursors - when moving vertical
+    set so=10 " set 10 lines to the cursors - when moving vertical
     set wildmenu " enhanced command line completion
     set hidden " current buffer can be put into background
     set showcmd " show incomplete commands
@@ -81,30 +77,30 @@ call plug#begin('~/.config/nvim/plugged')
     set showmatch " show matching braces
     set mat=2 " how many tenths of a second to blink
     set updatetime=250
+    set synmaxcol=200
     set signcolumn=yes
     set shortmess+=c
     set number relativenumber
     set clipboard=unnamed
     set splitbelow splitright
+    set ruler
 
     " Tab control
+    set autoindent " automatically set indent of new line
     set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
-    set tabstop=4 " the visible width of tabs
-    set softtabstop=4 " edit as if the tabs are 4 characters wide
-    set shiftwidth=4 " number of spaces to use for indent and unindent
-    set shiftround " round indent to a multiple of 'shiftwidth'
+    set tabstop=2 shiftwidth=2 expandtab
+    set softtabstop=2
 
     " code folding settings
-    set foldmethod=syntax " fold based on indent
-    set foldlevelstart=99
-    set foldnestmax=10 " deepest fold is 10 levels
-    set nofoldenable " don't fold by default
-    set foldlevel=1
+    " set foldmethod=syntax " fold based on indent
+    " set foldlevelstart=99
+    " set foldnestmax=10 " deepest fold is 10 levels
+    " set nofoldenable " don't fold by default
+    " set foldlevel=1
 
     " toggle invisible characters
     set list
-    set listchars=tab:→\ ,eol:¬,trail:⋅,ext***REMOVED***s:❯,precedes:❮
-    set showbreak=↪
+    " set listchars=tab:→\ ,eol:¬,trail:⋅,ext***REMOVED***s:❯,precedes:❮
 
     " Explicitly tell vim that the terminal supports 256 colors
     set t_Co=256
@@ -157,7 +153,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     " set paste toggle
     set pastetoggle=<leader>v
-
+    
     " edit ~/.config/nvim/init.vim
     map <leader>ev :e! ~/.config/nvim/init.vim<cr>
     " edit gitconfig
@@ -191,17 +187,10 @@ call plug#begin('~/.config/nvim/plugged')
     " enable . command in visual mode
     vnoremap . :normal .<cr>
 
-    " map <silent> <C-h> <Plug>WinMoveLeft
-    " map <silent> <C-j> <Plug>WinMoveDown
-    " map <silent> <C-k> <Plug>WinMoveUp
-    " map <silent> <C-l> <Plug>WinMoveRight
-    
     nnoremap <C-h> <C-w>h
     nnoremap <C-j> <C-w>j
     nnoremap <C-k> <C-w>k
     nnoremap <C-l> <C-w>l
-
-    nmap <leader>z <Plug>Zoom
 
     map <leader>wc :wincmd q<cr>
 
@@ -424,9 +413,10 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() ***REMOVED*** ***REMOVED***
         Plug 'junegunn/fzf.vim'
 
-        let g:fzf_layout = { 'down': '~30%' ***REMOVED***
+        let g:fzf_layout = { 'down': '~25%' ***REMOVED***
         let g:grepprg='rg --vimgrep'
-        let g:rg_find_command = 'rg --files --follow  -g "!{.config,etc,node_modules,.git,target,.reast,.d,.cm,.DS_Store***REMOVED***/*"'
+        " let g:rg_find_command = 'rg --files --follow -g "!{.config,etc,node_modules,.git,target,.reast,.d,.cm,.DS_Store,.bs.js***REMOVED***/*"'
+        let $FZF_DEFAULT_COMMAND = 'rg --files --follow -g "!{.config,etc,node_modules,.git,target,.reast,.d,.cm,.DS_Store,.bs.js***REMOVED***/*"'
 
         function! RipgrepFzf(query, fullscreen)
             let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
@@ -495,7 +485,7 @@ call plug#begin('~/.config/nvim/plugged')
     " ***REMOVED******REMOVED******REMOVED***
     
     " coc {{{
-        Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install() ***REMOVED******REMOVED***
+        Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'***REMOVED***
 
         let g:coc_global_extensions = [
         \ 'coc-yaml',
@@ -611,19 +601,11 @@ call plug#begin('~/.config/nvim/plugged')
     " ***REMOVED******REMOVED******REMOVED***
 
     " JavaScript {{{
-        Plug 'othree/yajs.vim', { 'for': [ 'javascript', 'javascript.jsx', 'html', 'js' ] ***REMOVED***
-        Plug 'mxw/vim-jsx'
-        Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html', 'js'] ***REMOVED***
-        Plug 'moll/vim-node', { 'for': ['javascript', 'js'] ***REMOVED***
-        Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx', 'js'], 'do': 'npm install' ***REMOVED***
-        Plug 'MaxMEllon/vim-jsx-pretty'
-        let g:vim_jsx_pretty_highlight_close_tag = 1
-
         Plug 'https://github.com/othree/javascript-libraries-syntax.vim', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
         Plug 'thinca/vim-textobj-function-javascript',    { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
         Plug '1995eaton/vim-better-javascript-completion', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
-        Plug 'chemzqm/vim-jsx-improve', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
-        Plug 'gavocanov/vim-js-indent', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
+        Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'js', 'jsx'] ***REMOVED***
+        Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx', 'js', 'jsx'] ***REMOVED***
     " ***REMOVED******REMOVED******REMOVED***
 
     " ReasonML {{{
@@ -670,10 +652,10 @@ call plug#***REMOVED***()
     " This call must happen after the plug#***REMOVED***() call to ensure
     " that the colorschemes have been loaded
     colorscheme dracula
-    " let g:dracula_colorterm = 0
 
     syntax enable
     filetype plugin indent on
+
     " make the highlighting of tabs and other non-text less annoying
     highlight SpecialKey ctermfg=19 guifg=#333333
     highlight NonText ctermfg=19 guifg=#333333
@@ -685,5 +667,3 @@ call plug#***REMOVED***()
     highlight Type cterm=italic term=italic gui=italic
     highlight Normal ctermbg=none
 " ***REMOVED******REMOVED******REMOVED***
-
-" vim:set foldmethod=marker foldlevel=0
