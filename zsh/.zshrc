@@ -147,3 +147,13 @@ compinit
 
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
+
+## Zsh Autocomplete
+ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+## Golang
+export GOPATH="${HOME***REMOVED***/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH***REMOVED***/bin:${GOROOT***REMOVED***/bin"
+test -d "${GOPATH***REMOVED***" || mkdir "${GOPATH***REMOVED***"
+test -d "${GOPATH***REMOVED***/src/github.com" || mkdir -p "${GOPATH***REMOVED***/src/github.com"

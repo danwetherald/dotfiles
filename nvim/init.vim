@@ -11,6 +11,8 @@ call plug#begin('~/dotfiles/nvim/plugged')
     abbr attribtue attribute
     abbr attribuet attribute
 
+    set modifiable
+
     set autoread " detect when a file is changed
 
     set history=2000 " change history to 2000
@@ -379,6 +381,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
             \ 'Ignored'   : '☒',
             \ "Unknown"   : "?"
         \ ***REMOVED***
+        let g:NERDTreeGitStatusLogLevel = 3
         
         augroup nerdtree
             autocmd!
@@ -484,6 +487,10 @@ call plug#begin('~/dotfiles/nvim/plugged')
         let g:UltiSnipsJumpBackwardTrigger="<C-k>"
     " ***REMOVED******REMOVED******REMOVED***
     
+    " GraphQL {{{
+        Plug 'jparise/vim-graphql'
+    " ***REMOVED******REMOVED******REMOVED***"
+    
     " coc {{{
         Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'***REMOVED***
 
@@ -508,10 +515,15 @@ call plug#begin('~/dotfiles/nvim/plugged')
         \ 'coc-tabnine',
         \ 'coc-solargraph',
         \ 'coc-prisma',
-        \ 'coc-html'
+        \ 'coc-html',
+        \ 'coc-graphql',
+        \ 'coc-go'
         \ ]
 
         autocmd CursorHold * silent call CocActionAsync('highlight')
+
+        " coc-go
+        autocmd BufWritePre *.go :call CocAction('organizeImport')
 
         " coc-prettier
         command! -nargs=0 Prettier :CocCommand prettier.formatFile

@@ -1,4 +1,5 @@
 {
+  "coc.preferences.messageLevel": "error",
   "suggest.enablePreview": true,
   "codeLens.enable": true,
   "git.addedSign.text": "┃",
@@ -13,6 +14,8 @@
   "diagnostic.infoSign": "●",
   "diagnostic.hintSign": "○",
   "git.addGBlameToBufferVar": true,
+  "graphql.filetypes": ["graphql", "javascript", "javascriptreact", "typescript", "typescriptreact", "reason", "graphqls"],
+  "graphql.watcherPattern": "**/*.{graphql,gql,js,jsx,ts,tsx,re,graphqls***REMOVED***",
   "coc.preferences.formatOnSaveFiletypes": [
     "yaml",
     "typescript",
@@ -22,7 +25,9 @@
     "typescriptreact",
     "javascriptreact",
     "reason",
-    "ruby"
+    "ruby",
+    "graphql",
+    "go"
   ],
   "explorer.icon.enableNerdfont": true,
   "explorer.sources": [
