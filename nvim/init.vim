@@ -622,6 +622,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
 
     " ReasonML {{{
         Plug 'reasonml-editor/vim-reason-plus'
+        Plug 'amiralies/vim-rescript'
     " ***REMOVED******REMOVED******REMOVED***
 
     " TypeScript {{{
