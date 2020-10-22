@@ -6,7 +6,7 @@ function appChanged(appName, eventType, appObject)
   if hour > 20 or hour < 7 then
     if (eventType == hs.application.watcher.activated) then
       if (appName == "kitty") then
-        hs.brightness.set(25)
+        hs.brightness.set(40)
       else
         hs.brightness.set(1)
   ***REMOVED***
