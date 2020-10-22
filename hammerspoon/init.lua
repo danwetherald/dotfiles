@@ -1,5 +1,3 @@
-local alert = require "hs.alert"
-
 require "windows"
 require "wifi"
 require "brightness"
