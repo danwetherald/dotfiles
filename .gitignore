@@ -2,3 +2,5 @@
 nvim/undo/**.*
 **/undo
 .DS_Store
+Spoons
+lang_servers

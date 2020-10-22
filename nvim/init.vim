@@ -118,28 +118,34 @@ call plug#begin('~/dotfiles/nvim/plugged')
 ***REMOVED***if
 
     " enable 24 bit color support if supported
-    if has("termguicolors")
-        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    " if has("termguicolors")
+    "     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    "     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-        set termguicolors
-***REMOVED***if
+    "     set termguicolors
+    " ***REMOVED***if
 
     " highlight conflicts
     match ErrorMsg '^\(<\|=\|>\)\{7\***REMOVED***\([^=].\+\)\?$'
 
     " Dev Icons
     Plug 'ryanoasis/vim-devicons'
+    
+    " Better syntax
+    Plug 'sheerun/vim-polyglot'
 
     " Load colorschemes
     Plug 'dracula/vim', { 'as': 'dracula' ***REMOVED***
+    Plug 'joshdick/onedark.vim', { 'as': 'onedark' ***REMOVED***
 
     " LightLine {{{
         Plug 'itchyny/lightline.vim'
 
+        let g:lightline = { 'colorscheme': 'solarized' ***REMOVED***
+
         let g:lightline = {
-            \ 'colorscheme': 'dracula'
-            \***REMOVED***
+          \ 'colorscheme': 'onedark',
+          \***REMOVED***
     " ***REMOVED******REMOVED******REMOVED***
 " ***REMOVED******REMOVED******REMOVED***
 
@@ -512,6 +518,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
         \ 'coc-diagnostic',
         \ 'coc-tailwindcss',
         \ 'coc-reason',
+        \ 'coc-rescript',
         \ 'coc-tabnine',
         \ 'coc-solargraph',
         \ 'coc-prisma',
@@ -623,6 +630,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
     " ReasonML {{{
         Plug 'reasonml-editor/vim-reason-plus'
         Plug 'amiralies/vim-rescript'
+        Plug 'ryyppy/vim-rescript'
     " ***REMOVED******REMOVED******REMOVED***
 
     " TypeScript {{{
@@ -664,9 +672,9 @@ call plug#***REMOVED***()
 " Colorscheme and final setup {{{
     " This call must happen after the plug#***REMOVED***() call to ensure
     " that the colorschemes have been loaded
-    colorscheme dracula
+    colorscheme onedark
 
-    syntax enable
+    syntax on
     filetype plugin indent on
 
     " make the highlighting of tabs and other non-text less annoying

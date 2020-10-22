@@ -15,7 +15,7 @@
   "diagnostic.hintSign": "○",
   "git.addGBlameToBufferVar": true,
   "graphql.filetypes": ["graphql", "javascript", "javascriptreact", "typescript", "typescriptreact", "reason", "graphqls"],
-  "graphql.watcherPattern": "**/*.{graphql,gql,js,jsx,ts,tsx,re,graphqls***REMOVED***",
+  "graphql.watcherPattern": "**/*.{graphql,gql,graphqls***REMOVED***",
   "coc.preferences.formatOnSaveFiletypes": [
     "yaml",
     "typescript",
@@ -25,6 +25,7 @@
     "typescriptreact",
     "javascriptreact",
     "reason",
+    "rescript",
     "ruby",
     "graphql",
     "go"

@@ -126,7 +126,7 @@ alias tml='tmux ls'
 alias tmn='tmux new-session -s'
 alias tmuxa='tmux  new-session -A'
 alias tmuxl='tmux list-sessions'
-alias gtbc="cd ~/Developer/BetterCart"
+alias gtbc="cd ~/Developer/BetterCart/refactor/bettercart"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -149,7 +149,7 @@ compinit
 kitty + complete setup zsh | source /dev/stdin
 
 ## Zsh Autocomplete
- source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+ # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ## Golang
 export GOPATH="${HOME***REMOVED***/.go"
