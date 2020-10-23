@@ -9,13 +9,13 @@ function! functions#PlugLoad()
             if v:shell_error
                 echom "Error downloading vim-plug. Please install it manually.\n"
                 exit
-        ***REMOVED***if
+            endif
         else
             echom "vim-plug not installed. Please install it manually or install curl.\n"
             exit
-    ***REMOVED***if
-***REMOVED***if
-***REMOVED***function
+        endif
+    endif
+endfunction
 
 " delete the current buffer
 function! functions#Delete(...)
@@ -28,7 +28,7 @@ function! functions#Delete(...)
         return -1
     else
         let file=expand('%:p')
-***REMOVED***if
+    endif
     let status=delete(file)
     if (status == 0)
         echo "Deleted " . file
@@ -36,6 +36,6 @@ function! functions#Delete(...)
         echohl WarningMsg
         echo "Failed to delete " . file
         echohl None
-***REMOVED***if
+    endif
     return status
-***REMOVED***function
+endfunction

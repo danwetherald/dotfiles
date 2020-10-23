@@ -9,11 +9,11 @@ function appChanged(appName, eventType, appObject)
         hs.brightness.set(40)
       else
         hs.brightness.set(1)
-  ***REMOVED***
-***REMOVED***
-***REMOVED***
+      end
+    end
+  end
 
-***REMOVED***
+end
 
 appWatcher = hs.application.watcher.new(appChanged)
 appWatcher:start()

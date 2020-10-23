@@ -15,7 +15,7 @@
   "diagnostic.hintSign": "○",
   "git.addGBlameToBufferVar": true,
   "graphql.filetypes": ["graphql", "javascript", "javascriptreact", "typescript", "typescriptreact", "reason", "graphqls"],
-  "graphql.watcherPattern": "**/*.{graphql,gql,graphqls***REMOVED***",
+  "graphql.watcherPattern": "**/*.{graphql,gql,graphqls}",
   "coc.preferences.formatOnSaveFiletypes": [
     "yaml",
     "typescript",
@@ -32,8 +32,8 @@
   ],
   "explorer.icon.enableNerdfont": true,
   "explorer.sources": [
-    { "name": "buffer", "expand": true ***REMOVED***,
-    { "name": "file", "expand": true ***REMOVED***
+    { "name": "buffer", "expand": true },
+    { "name": "file", "expand": true }
   ],
   "explorer.file.column.git.icon.added": "✚",
   "explorer.file.column.git.icon.deleted": "✖",
@@ -46,11 +46,11 @@
   "explorer.previewAction.onHover": false,
   "explorer.keyMappings": {
     "<cr>": ["expandable?", "expandOrCollapse", "open"]
-  ***REMOVED***,
+  },
   "eslint.enable": false,
   "diagnostic-languageserver.filetypes": {
     "sh": "shellcheck"
-  ***REMOVED***,
+  },
   "diagnostic-languageserver.linters": {
     "shellcheck": {
       "args": ["--format=gcc", "--external-sources", "-"],
@@ -64,7 +64,7 @@
           "line": 1,
           "message": 4,
           "security": 3
-        ***REMOVED***
+        }
       ],
       "offsetColumn": 0,
       "offsetLine": 0,
@@ -72,14 +72,14 @@
         "error": "error",
         "note": "warning",
         "warning": "warning"
-      ***REMOVED***,
+      },
       "sourceName": "shellcheck"
-    ***REMOVED***
-  ***REMOVED***,
+    }
+  },
   "solargraph.useBundler": false,
   "solargraph.bundlerPath": "/Users/danwetherald/.rbenv/versions/2.6.5/bin/bundle",
   "solargraph.autoformat": true,
   "solargraph.formatting": true,
   "solargraph.completion": true,
   "solargraph.hover": true
-***REMOVED***
+}

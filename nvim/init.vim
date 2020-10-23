@@ -28,13 +28,13 @@ call plug#begin('~/dotfiles/nvim/plugged')
         " show results of substition as they're happening
         " but don't open a split
         set inccommand=nosplit
-***REMOVED***if
+    endif
 
     set backspace=indent,eol,start " make backspace behave in a sane manner
 
     if has('mouse')
         set mouse=a
-***REMOVED***if
+    endif
 
     " Searching
     set ignorecase " case insensitive searching
@@ -54,11 +54,11 @@ call plug#begin('~/dotfiles/nvim/plugged')
     " Use persistent history.
     if !isdirectory("/tmp/.vim-undo-dir")
         call mkdir("/tmp/.vim-undo-dir", "", 0700)
-***REMOVED***if
+    endif
     set undodir=/tmp/.vim-undo-dir
     set undofile
 
-" ***REMOVED******REMOVED******REMOVED***
+" }}}
 
 " Appearance {{{
     set ttyfast " faster redrawing
@@ -102,7 +102,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
 
     " toggle invisible characters
     set list
-    " set listchars=tab:→\ ,eol:¬,trail:⋅,ext***REMOVED***s:❯,precedes:❮
+    " set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 
     " Explicitly tell vim that the terminal supports 256 colors
     set t_Co=256
@@ -115,7 +115,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
     if &term =~ '256color'
         " disable background color erase
         set t_ut=
-***REMOVED***if
+    endif
 
     " enable 24 bit color support if supported
     " if has("termguicolors")
@@ -123,10 +123,10 @@ call plug#begin('~/dotfiles/nvim/plugged')
     "     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
     "     set termguicolors
-    " ***REMOVED***if
+    " endif
 
     " highlight conflicts
-    match ErrorMsg '^\(<\|=\|>\)\{7\***REMOVED***\([^=].\+\)\?$'
+    match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
     " Dev Icons
     Plug 'ryanoasis/vim-devicons'
@@ -135,19 +135,19 @@ call plug#begin('~/dotfiles/nvim/plugged')
     Plug 'sheerun/vim-polyglot'
 
     " Load colorschemes
-    Plug 'dracula/vim', { 'as': 'dracula' ***REMOVED***
-    Plug 'joshdick/onedark.vim', { 'as': 'onedark' ***REMOVED***
+    Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'joshdick/onedark.vim', { 'as': 'onedark' }
 
     " LightLine {{{
         Plug 'itchyny/lightline.vim'
 
-        let g:lightline = { 'colorscheme': 'solarized' ***REMOVED***
+        let g:lightline = { 'colorscheme': 'solarized' }
 
         let g:lightline = {
           \ 'colorscheme': 'onedark',
-          \***REMOVED***
-    " ***REMOVED******REMOVED******REMOVED***
-" ***REMOVED******REMOVED******REMOVED***
+          \}
+    " }}}
+" }}}
 
 " General Mappings {{{
     " set a map leader for more key combos
@@ -178,7 +178,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
 
     " remove extra whitespace
     nmap <leader><space> :%s/\s\+$<cr>
-    nmap <leader><space><space> :%s/\n\{2,***REMOVED***/\r\r/g<cr>
+    nmap <leader><space><space> :%s/\n\{2,}/\r\r/g<cr>
 
     inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
     inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
@@ -214,7 +214,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
 
     vnoremap $( <esc>`>a)<esc>`<i(<esc>
     vnoremap $[ <esc>`>a]<esc>`<i[<esc>
-    vnoremap ${ <esc>`>a***REMOVED***<esc>`<i{<esc>
+    vnoremap ${ <esc>`>a}<esc>`<i{<esc>
     vnoremap $" <esc>`>a"<esc>`<i"<esc>
     vnoremap $' <esc>`>a'<esc>`<i'<esc>
     vnoremap $\ <esc>`>o*/<esc>`<O/*<esc>
@@ -260,7 +260,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
     nmap <leader>4 <Plug>HiInterestingWord4
     nmap <leader>5 <Plug>HiInterestingWord5
     nmap <leader>6 <Plug>HiInterestingWord6
-" ***REMOVED******REMOVED******REMOVED***
+" }}}
 
 " AutoGroups {{{
     " file type specific settings
@@ -281,7 +281,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
         " coc  correct comment highlighting
         autocmd FileType json syntax match Comment +\/\/.\+$+
     augroup END
-" ***REMOVED******REMOVED******REMOVED***
+" }}}
 
 " General Functionality {{{
     " better terminal integration
@@ -294,7 +294,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
     " mappings which are simply short normal mode aliases for commonly used ex commands
     Plug 'tpope/vim-unimpaired'
 
-    " ***REMOVED***ings for html, xml, etc. - ehances surround
+    " endings for html, xml, etc. - ehances surround
     Plug 'tpope/vim-ragtag'
 
     " mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
@@ -330,30 +330,30 @@ call plug#begin('~/dotfiles/nvim/plugged')
 
         " Custom startup list, only show MRU from current directory/project
         let g:startify_lists = [
-        \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] ***REMOVED***,
-        \  { 'type': function('helpers#startify#listcommits'), 'header': [ 'Recent Commits' ] ***REMOVED***,
-        \  { 'type': 'sessions',  'header': [ 'Sessions' ]       ***REMOVED***,
-        \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ]      ***REMOVED***,
-        \  { 'type': 'commands',  'header': [ 'Commands' ]       ***REMOVED***,
+        \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
+        \  { 'type': function('helpers#startify#listcommits'), 'header': [ 'Recent Commits' ] },
+        \  { 'type': 'sessions',  'header': [ 'Sessions' ]       },
+        \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ]      },
+        \  { 'type': 'commands',  'header': [ 'Commands' ]       },
         \ ]
 
         let g:startify_commands = [
-        \   { 'uc': [ 'Clean Plugins', ':PlugClean' ] ***REMOVED***,
-        \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] ***REMOVED***,
-        \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] ***REMOVED***,
+        \   { 'uc': [ 'Clean Plugins', ':PlugClean' ] },
+        \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
+        \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
         \ ]
 
         let g:startify_bookmarks = [
-            \ { 'd': '~/dotfiles' ***REMOVED***,
-            \ { 'c': '~/.config/nvim/init.vim' ***REMOVED***,
-            \ { 'h': '/Volumes/config' ***REMOVED***,
-            \ { 'g': '~/.gitconfig' ***REMOVED***,
-            \ { 'z': '~/.zshrc' ***REMOVED***
+            \ { 'd': '~/dotfiles' },
+            \ { 'c': '~/.config/nvim/init.vim' },
+            \ { 'h': '/Volumes/config' },
+            \ { 'g': '~/.gitconfig' },
+            \ { 'z': '~/.zshrc' }
         \ ]
 
         autocmd User Startified setlocal cursorline
         nmap <leader>st :Startify<cr>
-    " ***REMOVED******REMOVED******REMOVED***
+    " }}}
 
     " context-aware pasting
     Plug 'sickill/vim-pasta'
@@ -386,7 +386,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
             \ "Clean"     : "✔︎",
             \ 'Ignored'   : '☒',
             \ "Unknown"   : "?"
-        \ ***REMOVED***
+        \ }
         let g:NERDTreeGitStatusLogLevel = 3
         let g:NERDTreeIgnore = ['^node_modules$']
         
@@ -397,11 +397,11 @@ call plug#begin('~/dotfiles/nvim/plugged')
         augroup END
         
         " Auto open Nerd tree and start fzf
-        autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | ***REMOVED***if
-        autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'FZF' | ***REMOVED***if
+        autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+        autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'FZF' | endif
 
         " Auto close Nerd tree if only window left
-        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | ***REMOVED***if
+        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
         " Toggle NERDTree
         function! ToggleNerdTree()
@@ -409,32 +409,32 @@ call plug#begin('~/dotfiles/nvim/plugged')
                 :NERDTreeFind
             else
                 :NERDTreeToggle
-        ***REMOVED***if
-    ***REMOVED***function
+            endif
+        endfunction
 
         " toggle nerd tree
         nmap <silent> <leader>n :call ToggleNerdTree()<cr>
 
         " find the current file in nerdtree without needing to reload the drawer
         nmap <silent> <leader>y :NERDTreeFind<cr>
-    " ***REMOVED******REMOVED******REMOVED***
+    " }}}
 
     " FZF {{{
-        Plug 'junegunn/fzf', { 'do': { -> fzf#install() ***REMOVED*** ***REMOVED***
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
 
-        let g:fzf_layout = { 'down': '~25%' ***REMOVED***
+        let g:fzf_layout = { 'down': '~25%' }
         let g:grepprg='rg --vimgrep'
-        " let g:rg_find_command = 'rg --files --follow -g "!{.config,etc,node_modules,.git,target,.reast,.d,.cm,.DS_Store,.bs.js***REMOVED***/*"'
-        let $FZF_DEFAULT_COMMAND = 'rg --files --follow -g "!{.config,etc,node_modules,.git,target,.reast,.d,.cm,.DS_Store,.bs.js***REMOVED***/*"'
+        " let g:rg_find_command = 'rg --files --follow -g "!{.config,etc,node_modules,.git,target,.reast,.d,.cm,.DS_Store,.bs.js}/*"'
+        let $FZF_DEFAULT_COMMAND = 'rg --files --follow -g "!{.config,etc,node_modules,.git,target,.reast,.d,.cm,.DS_Store,.bs.js}/*"'
 
         function! RipgrepFzf(query, fullscreen)
             let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
             let initial_command = printf(command_fmt, shellescape(a:query))
-            let reload_command = printf(command_fmt, '{q***REMOVED***')
-            let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]***REMOVED***
+            let reload_command = printf(command_fmt, '{q}')
+            let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
             call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-    ***REMOVED***function
+        endfunction
 
         command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
         
@@ -454,17 +454,17 @@ call plug#begin('~/dotfiles/nvim/plugged')
         nnoremap <silent> <Leader>C :call fzf#run({
         \   'source':
         \     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
-        \         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-***REMOVED***$', '', '')"),
+        \         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
         \   'sink':    'colo',
         \   'options': '+m',
         \   'left':    30
-        \ ***REMOVED***)<CR>
+        \ })<CR>
 
         command! FZFMru call fzf#run({
         \  'source':  v:oldfiles,
         \  'sink':    'e',
         \  'options': '-m -x +s',
-        \  'down':    '40%'***REMOVED***)
+        \  'down':    '40%'})
 
         command! -bang -nargs=* Find call fzf#vim#grep(
             \ 'rg --column --line-number --no-heading --follow --color=always '.<q-args>, 1,
@@ -473,7 +473,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:50%', '?'), <bang>0)
         command! -bang -nargs=? -complete=dir GitFiles
             \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('right:50%', '?'), <bang>0)
-    " ***REMOVED******REMOVED******REMOVED***
+    " }}}
 
     " vim-fugitive {{{
         Plug 'tpope/vim-fugitive'
@@ -485,21 +485,21 @@ call plug#begin('~/dotfiles/nvim/plugged')
         Plug 'tpope/vim-rhubarb' " hub extension for fugitive
         Plug 'sodapopcan/vim-twiggy'
         Plug 'rbong/vim-flog'
-    " ***REMOVED******REMOVED******REMOVED***
+    " }}}
 
     " UltiSnips {{{
         Plug 'SirVer/ultisnips' " Snippets plugin
         let g:UltiSnipsExpandTrigger="<C-l>"
         let g:UltiSnipsJumpForwardTrigger="<C-j>"
         let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-    " ***REMOVED******REMOVED******REMOVED***
+    " }}}
     
     " GraphQL {{{
         Plug 'jparise/vim-graphql'
-    " ***REMOVED******REMOVED******REMOVED***"
+    " }}}"
     
     " coc {{{
-        Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'***REMOVED***
+        Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
         let g:coc_global_extensions = [
         \ 'coc-yaml',
@@ -574,8 +574,8 @@ call plug#begin('~/dotfiles/nvim/plugged')
                 execute 'h '.expand('<cword>')
             else
                 call CocAction('doHover')
-        ***REMOVED***if
-    ***REMOVED***function
+            endif
+        endfunction
 
         "tab completion
         inoremap <silent><expr> <TAB>
@@ -587,7 +587,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
         function! s:check_back_space() abort
         let col = col('.') - 1
         return !col || getline('.')[col - 1]  =~# '\s'
-    ***REMOVED***function
+        endfunction
 
         " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
         " position. Coc only does snippet and additional edit on confirm.
@@ -595,13 +595,13 @@ call plug#begin('~/dotfiles/nvim/plugged')
             inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
         else
             imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-    ***REMOVED***if
+        endif
 
         " For enhanced <CR> experience with coc-pairs checkout :h coc#on_enter()
         inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-    " ***REMOVED******REMOVED******REMOVED***
-" ***REMOVED******REMOVED******REMOVED***
+    " }}}
+" }}}
 
 " Language-Specific Configuration {{{
     " html / templates {{{
@@ -609,69 +609,69 @@ call plug#begin('~/dotfiles/nvim/plugged')
         Plug 'mattn/emmet-vim'
 
         " match tags in html, similar to paren support
-        Plug 'gregsexton/MatchTag', { 'for': 'html' ***REMOVED***
+        Plug 'gregsexton/MatchTag', { 'for': 'html' }
 
         " html5 support
-        Plug 'othree/html5.vim', { 'for': 'html' ***REMOVED***
+        Plug 'othree/html5.vim', { 'for': 'html' }
 
         Plug 'tpope/vim-ragtag'
         Plug 'AndrewRadev/splitjoin.vim'
         Plug 'skwp/vim-html-escape'
         Plug 'cakebaker/scss-syntax.vim'
-    " ***REMOVED******REMOVED******REMOVED***
+    " }}}
 
     " JavaScript {{{
-        Plug 'https://github.com/othree/javascript-libraries-syntax.vim', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
-        Plug 'thinca/vim-textobj-function-javascript',    { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
-        Plug '1995eaton/vim-better-javascript-completion', { 'for': [ 'javascript', 'js', 'jsx' ]***REMOVED***
-        Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'js', 'jsx'] ***REMOVED***
-        Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx', 'js', 'jsx'] ***REMOVED***
-    " ***REMOVED******REMOVED******REMOVED***
+        Plug 'https://github.com/othree/javascript-libraries-syntax.vim', { 'for': [ 'javascript', 'js', 'jsx' ]}
+        Plug 'thinca/vim-textobj-function-javascript',    { 'for': [ 'javascript', 'js', 'jsx' ]}
+        Plug '1995eaton/vim-better-javascript-completion', { 'for': [ 'javascript', 'js', 'jsx' ]}
+        Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'js', 'jsx'] }
+        Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx', 'js', 'jsx'] }
+    " }}}
 
     " ReasonML {{{
         Plug 'reasonml-editor/vim-reason-plus'
         Plug 'amiralies/vim-rescript'
         Plug 'ryyppy/vim-rescript'
-    " ***REMOVED******REMOVED******REMOVED***
+    " }}}
 
     " TypeScript {{{
         Plug 'leafgarland/typescript-vim'
         Plug 'ianks/vim-tsx'
-    " ***REMOVED******REMOVED******REMOVED***
+    " }}}
 
     " Styles {{{
-        Plug 'wavded/vim-stylus', { 'for': ['stylus', 'markdown'] ***REMOVED***
-        Plug 'groenewege/vim-less', { 'for': 'less' ***REMOVED***
-        Plug 'hail2u/vim-css3-syntax', { 'for': 'css' ***REMOVED***
-        Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' ***REMOVED***
-        Plug 'stephenway/postcss.vim', { 'for': 'css' ***REMOVED***
-    " ***REMOVED******REMOVED******REMOVED***
+        Plug 'wavded/vim-stylus', { 'for': ['stylus', 'markdown'] }
+        Plug 'groenewege/vim-less', { 'for': 'less' }
+        Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
+        Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
+        Plug 'stephenway/postcss.vim', { 'for': 'css' }
+    " }}}
 
     " markdown {{{
-        Plug 'tpope/vim-markdown', { 'for': 'markdown' ***REMOVED***
+        Plug 'tpope/vim-markdown', { 'for': 'markdown' }
         let g:markdown_fenced_languages = [ 'tsx=typescript.tsx' ]
 
         " Open markdown files in Marked.app - mapped to <leader>m
-        Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' ***REMOVED***
+        Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' }
         nmap <leader>m :MarkedOpen!<cr>
         nmap <leader>mq :MarkedQuit<cr>
         nmap <leader>* *<c-o>:%s///gn<cr>
-    " ***REMOVED******REMOVED******REMOVED***
+    " }}}
 
     " JSON {{{
-        Plug 'elzr/vim-json', { 'for': 'json' ***REMOVED***
+        Plug 'elzr/vim-json', { 'for': 'json' }
         let g:vim_json_syntax_conceal = 0
-    " ***REMOVED******REMOVED******REMOVED***
+    " }}}
     
     " Docker {{{
         Plug 'ekalinin/Dockerfile.vim'
-    " ***REMOVED******REMOVED******REMOVED***
-" ***REMOVED******REMOVED******REMOVED***
+    " }}}
+" }}}
 
-call plug#***REMOVED***()
+call plug#end()
 
 " Colorscheme and final setup {{{
-    " This call must happen after the plug#***REMOVED***() call to ensure
+    " This call must happen after the plug#end() call to ensure
     " that the colorschemes have been loaded
     colorscheme onedark
 
@@ -688,4 +688,4 @@ call plug#***REMOVED***()
     highlight xmlAttrib cterm=italic term=italic gui=italic
     highlight Type cterm=italic term=italic gui=italic
     highlight Normal ctermbg=none
-" ***REMOVED******REMOVED******REMOVED***
+" }}}

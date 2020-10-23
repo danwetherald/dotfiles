@@ -1,8 +1,8 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache***REMOVED***/p10k-instant-prompt-${(%):-%n***REMOVED***.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache***REMOVED***/p10k-instant-prompt-${(%):-%n***REMOVED***.zsh"
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 source ~/.bash_profile
@@ -152,8 +152,8 @@ kitty + complete setup zsh | source /dev/stdin
  # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ## Golang
-export GOPATH="${HOME***REMOVED***/.go"
+export GOPATH="${HOME}/.go"
 export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH***REMOVED***/bin:${GOROOT***REMOVED***/bin"
-test -d "${GOPATH***REMOVED***" || mkdir "${GOPATH***REMOVED***"
-test -d "${GOPATH***REMOVED***/src/github.com" || mkdir -p "${GOPATH***REMOVED***/src/github.com"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+test -d "${GOPATH}" || mkdir "${GOPATH}"
+test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"

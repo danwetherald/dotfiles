@@ -8,12 +8,12 @@ function ssidChangedCallback()
     local note = hs.notify.new({
       title="Connected to WiFi",
       informativeText="Now connected to " .. newSSID
-    ***REMOVED***):s***REMOVED***()
+    }):send()
 
     hs.timer.doAfter(3, function ()
       note:withdraw()
       note = nil
-***REMOVED***)
+    end)
 
     if newSSID == homeSSID and lastSSID ~= homeSSID then
         -- We just joined our home WiFi network
@@ -21,10 +21,10 @@ function ssidChangedCallback()
     elseif newSSID ~= homeSSID and lastSSID == homeSSID then
         -- We just departed our home WiFi network
         hs.audiodevice.defaultOutputDevice():setVolume(0)
-***REMOVED***
+    end
 
     lastSSID = newSSID
-***REMOVED***
+end
 
 wifiWatcher = hs.wifi.watcher.new(ssidChangedCallback)
 wifiWatcher:start()

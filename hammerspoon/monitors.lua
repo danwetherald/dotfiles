@@ -1,29 +1,27 @@
-local path = "http://***REMOVED***:8123/api/services/scene/turn_on"
+local path = "http://192.168.1.103:8123/api/services/scene/turn_on"
 
-***REMOVED***
+local headers = {
   ["Authorization"] =  "Bearer ***REMOVED***",
-***REMOVED***
-***REMOVED***
+  ["Content-Type"] = "application/json"
+}
 
-local payload = [[ {"entity_id":"scene.officenightwork"***REMOVED*** ]]
+local payload = [[ {"entity_id":"scene.officenightwork"} ]]
 
-***REMOVED***
+screenWatcher = nil
 
-***REMOVED***
-***REMOVED***
+function screenChanged(watcher)
+  screenName = hs.screen.primaryScreen():name()
 
-***REMOVED***
+  if screenName == "LG ULTRAWIDE" then
 
-***REMOVED***
-***REMOVED***
-***REMOVED***
-      hs.alert("LG", 1)
+    -- Checkout that its night
+    hour = tonumber(os.date("%H"))
+    if hour > 18 or hour < 7 then
+      -- Turn on Home Assistant Scene
+      hs.http.post(path, payload, headers)
+    end
+  end
+end
 
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-
-***REMOVED***
-***REMOVED***
+screenWatcher = hs.application.watcher.new(screenChanged)
+screenWatcher:start()
