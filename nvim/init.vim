@@ -388,6 +388,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
             \ "Unknown"   : "?"
         \ ***REMOVED***
         let g:NERDTreeGitStatusLogLevel = 3
+        let g:NERDTreeIgnore = ['^node_modules$']
         
         augroup nerdtree
             autocmd!

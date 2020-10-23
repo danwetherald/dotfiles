@@ -18,3 +18,7 @@ for key, app in pairs(applicationHotkeys) do
 hs.hotkey.bind({***REMOVED***, "f8", function()
   hs.spotify.playpause()
 ***REMOVED***)
+
+hs.hotkey.bind(hyper, "escape", function()
+  hs.reload()
+***REMOVED***)

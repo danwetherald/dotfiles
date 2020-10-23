@@ -2,6 +2,7 @@ require "windows"
 require "wifi"
 require "brightness"
 require "bindings"
+require "monitors"
 
 -- Reload automatically on config changes
 hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', hs.reload):start()
