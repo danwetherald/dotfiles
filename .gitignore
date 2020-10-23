@@ -4,3 +4,4 @@ nvim/undo/**.*
 .DS_Store
 Spoons
 lang_servers
+replacements.txt

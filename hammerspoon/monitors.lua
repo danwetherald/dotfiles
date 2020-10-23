@@ -1,7 +1,7 @@
 local path = "http://192.168.1.103:8123/api/services/scene/turn_on"
 
 local headers = {
-  ["Authorization"] =  "Bearer ***REMOVED***",
+  ["Authorization"] = "***REMOVED***",
   ["Content-Type"] = "application/json"
 }
 
