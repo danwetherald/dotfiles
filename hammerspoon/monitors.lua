@@ -1,5 +1,6 @@
 local path = "http://192.168.1.103:8123/api/services/scene/turn_on"
 
+-- local token = ""
 
 local headers = {
   ["Authorization"] = "Bearer " .. token,
