@@ -1,7 +1,7 @@
 {
   "coc.preferences.messageLevel": "error",
   "suggest.enablePreview": true,
-  "codeLens.enable": true,
+  "codeLens.enable": false,
   "git.addedSign.text": "┃",
   "git.removedSign.text": "┃",
   "git.changedSign.text": "┃",

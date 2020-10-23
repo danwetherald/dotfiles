@@ -64,7 +64,6 @@ call plug#begin('~/dotfiles/nvim/plugged')
     set ttyfast " faster redrawing
     set nowrap
     set linebreak
-    set showbreak=↪
     set diffopt+=vertical,iwhite,internal,algorithm:patience,hiddenoff
     set laststatus=2 " show the status line all the time
     set so=10 " set 10 lines to the cursors - when moving vertical
@@ -117,13 +116,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
         set t_ut=
     endif
 
-    " enable 24 bit color support if supported
-    " if has("termguicolors")
-    "     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    "     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-    "     set termguicolors
-    " endif
+    set termguicolors
 
     " highlight conflicts
     match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -284,9 +277,6 @@ call plug#begin('~/dotfiles/nvim/plugged')
 " }}}
 
 " General Functionality {{{
-    " better terminal integration
-    " substitute, search, and abbreviate multiple variants of a word
-    Plug 'tpope/vim-abolish'
 
     " easy commenting motions
     Plug 'tpope/vim-commentary'
@@ -305,12 +295,6 @@ call plug#begin('~/dotfiles/nvim/plugged')
 
     " enables repeating other supported plugins with the . command
     Plug 'tpope/vim-repeat'
-
-    " .editorconfig support
-    Plug 'editorconfig/editorconfig-vim'
-
-    " single/multi line code handler: gS - split one line into multiple, gJ - combine multiple lines into one
-    Plug 'AndrewRadev/splitjoin.vim'
 
     " https://github.com/norcalli/nvim-colorizer.lua/blob/master/README.md
     Plug 'norcalli/nvim-colorizer.lua'
@@ -605,19 +589,12 @@ call plug#begin('~/dotfiles/nvim/plugged')
 
 " Language-Specific Configuration {{{
     " html / templates {{{
-        " emmet support for vim - easily create markdup wth CSS-like syntax
-        Plug 'mattn/emmet-vim'
 
         " match tags in html, similar to paren support
         Plug 'gregsexton/MatchTag', { 'for': 'html' }
 
         " html5 support
         Plug 'othree/html5.vim', { 'for': 'html' }
-
-        Plug 'tpope/vim-ragtag'
-        Plug 'AndrewRadev/splitjoin.vim'
-        Plug 'skwp/vim-html-escape'
-        Plug 'cakebaker/scss-syntax.vim'
     " }}}
 
     " JavaScript {{{
@@ -647,17 +624,6 @@ call plug#begin('~/dotfiles/nvim/plugged')
         Plug 'stephenway/postcss.vim', { 'for': 'css' }
     " }}}
 
-    " markdown {{{
-        Plug 'tpope/vim-markdown', { 'for': 'markdown' }
-        let g:markdown_fenced_languages = [ 'tsx=typescript.tsx' ]
-
-        " Open markdown files in Marked.app - mapped to <leader>m
-        Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' }
-        nmap <leader>m :MarkedOpen!<cr>
-        nmap <leader>mq :MarkedQuit<cr>
-        nmap <leader>* *<c-o>:%s///gn<cr>
-    " }}}
-
     " JSON {{{
         Plug 'elzr/vim-json', { 'for': 'json' }
         let g:vim_json_syntax_conceal = 0
@@ -669,6 +635,8 @@ call plug#begin('~/dotfiles/nvim/plugged')
 " }}}
 
 call plug#end()
+
+lua require 'colorizer'.setup()
 
 " Colorscheme and final setup {{{
     " This call must happen after the plug#end() call to ensure
