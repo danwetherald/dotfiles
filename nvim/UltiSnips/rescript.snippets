@@ -1,0 +1,37 @@
+snippet rc
+@react.component
+let make = () => {
+	$1
+}
+endsnippet
+
+snippet rs
+	let ($1, $2) = React.useState(_ => $3)
+endsnippet
+
+snippet div.tw
+<div className=%tw("$1")>$2</div>
+endsnippet
+
+snippet d.tw
+<div className=%tw("$1")>
+endsnippet
+
+snippet s.make
+style={ReactDOM.Style.make(~$1=$2, ())}
+endsnippet
+
+snippet r.s
+{"$1"->React.string}
+endsnippet
+
+snippet switch
+switch $1 {
+	| Some($2) => {
+		$3
+	}
+	| None => {
+		$4
+	}
+}
+endsnippet

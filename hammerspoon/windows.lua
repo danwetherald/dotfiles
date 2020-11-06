@@ -1,4 +1,3 @@
--- Resize windows
 local hyper = {
   'cmd',
   'ctrl'
@@ -8,6 +7,7 @@ hs.loadSpoon("MiroWindowsManager")
 
 hs.window.animationDuration = 0.0
 
+-- Resize windows
 spoon.MiroWindowsManager:bindHotkeys({
   up = { hyper, "up" },
   right = { hyper, "right" },

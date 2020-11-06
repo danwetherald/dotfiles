@@ -296,9 +296,6 @@ call plug#begin('~/dotfiles/nvim/plugged')
     " enables repeating other supported plugins with the . command
     Plug 'tpope/vim-repeat'
 
-    " https://github.com/norcalli/nvim-colorizer.lua/blob/master/README.md
-    Plug 'norcalli/nvim-colorizer.lua'
-
     " detect indent style (tabs vs. spaces)
     Plug 'tpope/vim-sleuth'
 
@@ -473,6 +470,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
 
     " UltiSnips {{{
         Plug 'SirVer/ultisnips' " Snippets plugin
+        Plug 'honza/vim-snippets'
         let g:UltiSnipsExpandTrigger="<C-l>"
         let g:UltiSnipsJumpForwardTrigger="<C-j>"
         let g:UltiSnipsJumpBackwardTrigger="<C-k>"
@@ -496,9 +494,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
         \ 'coc-pairs',
         \ 'coc-sh',
         \ 'coc-vimlsp',
-        \ 'coc-emmet',
         \ 'coc-prettier',
-        \ 'coc-ultisnips',
         \ 'coc-explorer',
         \ 'coc-diagnostic',
         \ 'coc-tailwindcss',
@@ -509,7 +505,8 @@ call plug#begin('~/dotfiles/nvim/plugged')
         \ 'coc-prisma',
         \ 'coc-html',
         \ 'coc-graphql',
-        \ 'coc-go'
+        \ 'coc-go',
+        \ 'coc-snippets'
         \ ]
 
         autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -635,8 +632,6 @@ call plug#begin('~/dotfiles/nvim/plugged')
 " }}}
 
 call plug#end()
-
-lua require 'colorizer'.setup()
 
 " Colorscheme and final setup {{{
     " This call must happen after the plug#end() call to ensure
