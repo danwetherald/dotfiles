@@ -499,7 +499,6 @@ call plug#begin('~/dotfiles/nvim/plugged')
         \ 'coc-diagnostic',
         \ 'coc-tailwindcss',
         \ 'coc-reason',
-        \ 'coc-rescript',
         \ 'coc-tabnine',
         \ 'coc-solargraph',
         \ 'coc-prisma',
@@ -604,7 +603,16 @@ call plug#begin('~/dotfiles/nvim/plugged')
 
     " ReasonML {{{
         Plug 'reasonml-editor/vim-reason-plus'
-        Plug 'ryyppy/vim-rescript'
+        Plug 'rescript-lang/vim-rescript'
+
+        let g:rescript_type_hint_bin = "~/dotfiles/nvim/lang_servers/reason-language-server/bin.exe"
+
+        autocmd BufWritePost *.res,*.resi silent RescriptFormat
+
+        augroup rescriptFixes
+            autocmd!
+            autocmd FileType rescript call rescript#ChangeBinPaths()
+        augroup END
     " }}}
 
     " TypeScript {{{
