@@ -7,7 +7,8 @@ local headers = {
   ["Content-Type"] = "application/json"
 }
 
-local payload = [[ {"entity_id":"scene.officenightwork"} ]]
+local day_payload = [[ {"entity_id":"scene.officedaywork"} ]]
+local night_payload = [[ {"entity_id":"scene.officenightwork"} ]]
 
 screenWatcher = nil
 
@@ -18,9 +19,12 @@ function screenChanged(watcher)
 
     -- Checkout that its night
     hour = tonumber(os.date("%H"))
-    if hour >= 18 or hour < 7 then
-      -- Turn on Home Assistant Scene
-      hs.http.post(path, payload, headers)
+
+    -- Turn on Home Assistant Scene
+    if hour >= 16 or hour < 7 then
+      hs.http.post(path, night_payload, headers)
+    else
+      hs.http.post(path, day_payload, headers)
     end
   end
 end
