@@ -3,7 +3,7 @@ appWatcher = nil
 function appChanged(appName, eventType, appObject)
   hour = tonumber(os.date("%H"))
 
-  if hour > 21 or hour < 7 then
+  if hour > 20 or hour < 7 then
     if (eventType == hs.application.watcher.activated) then
       if (appName == "kitty") then
         hs.brightness.set(30)

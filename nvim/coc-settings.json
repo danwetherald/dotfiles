@@ -15,8 +15,6 @@
   "diagnostic.infoSign": "●",
   "diagnostic.hintSign": "○",
   "git.addGBlameToBufferVar": true,
-  "graphql.filetypes": ["graphql", "javascript", "javascriptreact", "typescript", "typescriptreact", "graphqls"],
-  "graphql.watcherPattern": "**/*.{graphql,gql,graphqls}",
   "coc.preferences.formatOnSaveFiletypes": [
     "yaml",
     "typescript",
@@ -26,8 +24,9 @@
     "javascriptreact",
     "reason",
     "ruby",
-    "graphql",
-    "go"
+    "go",
+    "rust",
+    "prisma"
   ],
   "explorer.icon.enableNerdfont": true,
   "explorer.sources": [
@@ -79,7 +78,7 @@
   "languageserver": {
     "rescript": {
       "enable": true,
-      "module": "~/dotfiles/nvim/lang_servers/rescript-vscode/server/out/server.js",
+      "module": "~/.config/nvim/plugged/vim-rescript/rescript-vscode/extension/server/out/server.js",
       "args": ["--node-ipc"],
       "filetypes": ["rescript"],
       "rootPatterns": ["bsconfig.json"]

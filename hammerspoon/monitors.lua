@@ -21,7 +21,7 @@ function screenChanged(watcher)
     hour = tonumber(os.date("%H"))
 
     -- Turn on Home Assistant Scene
-    if hour >= 16 or hour < 7 then
+    if hour >= 17 and hour <= 22 then
       hs.http.post(path, night_payload, headers)
     else
       hs.http.post(path, day_payload, headers)

@@ -406,7 +406,6 @@ call plug#begin('~/dotfiles/nvim/plugged')
 
         let g:fzf_layout = { 'down': '~25%' }
         let g:grepprg='rg --vimgrep'
-        " let g:rg_find_command = 'rg --files --follow -g "!{.config,etc,node_modules,.git,target,.reast,.d,.cm,.DS_Store,.bs.js}/*"'
         let $FZF_DEFAULT_COMMAND = 'rg --files --follow -g "!{.config,etc,node_modules,.git,target,.reast,.d,.cm,.DS_Store,.bs.js}/*"'
 
         function! RipgrepFzf(query, fullscreen)
@@ -417,10 +416,20 @@ call plug#begin('~/dotfiles/nvim/plugged')
             call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
         endfunction
 
+        command! -bang -nargs=* GGrep
+          \ call fzf#vim#grep(
+          \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+          \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+        function! s:find_git_root()
+            return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+        endfunction
+        command! ProjectFiles execute 'Files' s:find_git_root()
+
         command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
         
-        nmap <silent> <leader>t :FZF<cr>
-        nmap <silent> <leader>r :RG<cr>
+        nmap <silent> <leader>t :ProjectFiles<cr>
+        nmap <silent> <leader>r :GGrep<cr>
         nmap <silent> <leader>s :GFiles?<cr>
         nmap <leader><tab> <plug>(fzf-maps-n)
         xmap <leader><tab> <plug>(fzf-maps-x)
@@ -477,7 +486,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
     " }}}
     
     " GraphQL {{{
-        Plug 'jparise/vim-graphql'
+        " Plug 'jparise/vim-graphql'
     " }}}"
     
     " coc {{{
@@ -503,9 +512,11 @@ call plug#begin('~/dotfiles/nvim/plugged')
         \ 'coc-solargraph',
         \ 'coc-prisma',
         \ 'coc-html',
-        \ 'coc-graphql',
         \ 'coc-go',
-        \ 'coc-snippets'
+        \ 'coc-rls',
+        \ 'coc-rust-analyzer',
+        \ 'coc-snippets',
+        \ 'coc-fzf-preview'
         \ ]
 
         autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -603,21 +614,34 @@ call plug#begin('~/dotfiles/nvim/plugged')
 
     " ReasonML {{{
         Plug 'reasonml-editor/vim-reason-plus'
-        Plug 'rescript-lang/vim-rescript'
+    " }}}
 
-        let g:rescript_type_hint_bin = "~/dotfiles/nvim/lang_servers/reason-language-server/bin.exe"
+    " Rescript  {{{
+        Plug 'rescript-lang/vim-rescript', {'tag': 'v1.2.0'}
 
         autocmd BufWritePost *.res,*.resi silent RescriptFormat
 
-        augroup rescriptFixes
-            autocmd!
-            autocmd FileType rescript call rescript#ChangeBinPaths()
-        augroup END
-    " }}}
+        " augroup rescriptFixes
+        "     autocmd!
+        "     autocmd FileType rescript call rescript#ChangeBinPaths()
+        " augroup END
+    " }}}"
 
     " TypeScript {{{
         Plug 'leafgarland/typescript-vim'
         Plug 'ianks/vim-tsx'
+    " }}}
+
+    " Prisma {{{
+        Plug 'pantharshit00/vim-prisma'
+    " }}}
+
+    " Rust {{{
+        Plug 'rust-lang/rust.vim'
+
+        let g:LanguageClient_serverCommands = {
+        \ 'rust': ['rust-analyzer'],
+        \ }
     " }}}
 
     " Styles {{{
