@@ -24,8 +24,6 @@
     "javascriptreact",
     "reason",
     "ruby",
-    "go",
-    "rust",
     "prisma"
   ],
   "explorer.icon.enableNerdfont": true,
@@ -41,38 +39,9 @@
   "explorer.file.column.git.icon.modified": "✹",
   "explorer.file.column.git.icon.ignored": "☒",
   "explorer.openAction.for.directory": "expandOrCollapse",
-  "explorer.previewAction.onHover": false,
+  "explorer.previewAction.onHover": "labeling",
   "explorer.keyMappings": {
     "<cr>": ["expandable?", "expandOrCollapse", "open"]
-  },
-  "eslint.enable": false,
-  "diagnostic-languageserver.filetypes": {
-    "sh": "shellcheck"
-  },
-  "diagnostic-languageserver.linters": {
-    "shellcheck": {
-      "args": ["--format=gcc", "--external-sources", "-"],
-      "command": "shellcheck",
-      "debounce": 100,
-      "formatLines": 1,
-      "formatPattern": [
-        "^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$",
-        {
-          "column": 2,
-          "line": 1,
-          "message": 4,
-          "security": 3
-        }
-      ],
-      "offsetColumn": 0,
-      "offsetLine": 0,
-      "securities": {
-        "error": "error",
-        "note": "warning",
-        "warning": "warning"
-      },
-      "sourceName": "shellcheck"
-    }
   },
   "editor.snippetSuggestions": "top",
   "languageserver": {

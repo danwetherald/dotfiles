@@ -89,6 +89,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
     " Tab control
     set autoindent " automatically set indent of new line
     set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
+    set cindent
     set tabstop=2 shiftwidth=2 expandtab
     set softtabstop=2
 
@@ -130,15 +131,16 @@ call plug#begin('~/dotfiles/nvim/plugged')
     " Load colorschemes
     Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'joshdick/onedark.vim', { 'as': 'onedark' }
+    Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+    Plug 'haishanh/night-owl.vim'
+    Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+    Plug 'ghifarit53/tokyonight-vim'
+    Plug 'rafalbromirski/vim-aurora'
 
     " LightLine {{{
         Plug 'itchyny/lightline.vim'
 
-        let g:lightline = { 'colorscheme': 'solarized' }
-
-        let g:lightline = {
-          \ 'colorscheme': 'onedark',
-          \}
+        let g:lightline = { 'colorscheme': 'tokyonight' }
     " }}}
 " }}}
 
@@ -466,9 +468,9 @@ call plug#begin('~/dotfiles/nvim/plugged')
         \ 'coc-css',
         \ 'coc-json',
         \ 'coc-tsserver',
+        \ 'coc-tslint-plugin',
         \ 'coc-git',
         \ 'coc-eslint',
-        \ 'coc-tslint-plugin',
         \ 'coc-pairs',
         \ 'coc-sh',
         \ 'coc-vimlsp',
@@ -481,9 +483,6 @@ call plug#begin('~/dotfiles/nvim/plugged')
         \ 'coc-solargraph',
         \ 'coc-prisma',
         \ 'coc-html',
-        \ 'coc-go',
-        \ 'coc-rls',
-        \ 'coc-rust-analyzer',
         \ 'coc-snippets',
         \ 'coc-fzf-preview'
         \ ]
@@ -574,11 +573,8 @@ call plug#begin('~/dotfiles/nvim/plugged')
     " }}}
 
     " JavaScript {{{
-        Plug 'https://github.com/othree/javascript-libraries-syntax.vim', { 'for': [ 'javascript', 'js', 'jsx' ]}
-        Plug 'thinca/vim-textobj-function-javascript',    { 'for': [ 'javascript', 'js', 'jsx' ]}
-        Plug '1995eaton/vim-better-javascript-completion', { 'for': [ 'javascript', 'js', 'jsx' ]}
-        Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'js', 'jsx'] }
-        Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx', 'js', 'jsx'] }
+        Plug 'jelera/vim-javascript-syntax'
+        Plug 'maxmellon/vim-jsx-pretty'
     " }}}
 
     " ReasonML {{{
@@ -586,7 +582,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
     " }}}
 
     " Rescript  {{{
-        Plug 'rescript-lang/vim-rescript', {'tag': 'v1.2.0'}
+        Plug 'rescript-lang/vim-rescript', {'tag': 'v1.3.0'}
 
         autocmd BufWritePost *.res,*.resi silent RescriptFormat
 
@@ -634,9 +630,16 @@ call plug#begin('~/dotfiles/nvim/plugged')
 call plug#end()
 
 " Colorscheme and final setup {{{
-    " This call must happen after the plug#end() call to ensure
-    " that the colorschemes have been loaded
-    colorscheme onedark
+" This call must happen after the plug#end() call to ensure
+" that the colorschemes have been loaded
+
+    let g:tokyonight_style = 'night' " available: night, storm
+    let g:tokyonight_enable_italic = 1
+
+    colorscheme tokyonight
+
+    " let g:material_theme_style = 'ocean'
+    " let g:material_terminal_italics = 1
 
     syntax on
     filetype plugin indent on
