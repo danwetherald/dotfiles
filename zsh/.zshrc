@@ -112,7 +112,6 @@ alias psrv="python -m SimpleHTTPServer 8080"
 alias dc="docker-compose"
 alias dcr="docker-compose run"
 alias dub="docker-compose up --build"
-alias phsrv="php -S localhost:8080"
 alias python=/usr/local/bin/python3
 
 #Git Aliases
@@ -131,7 +130,7 @@ alias gtbc="cd ~/Developer/BetterCart/refactor/bettercart"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="/usr/local/opt/ruby/bin:$PATH"
+# export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -151,12 +150,11 @@ kitty + complete setup zsh | source /dev/stdin
 ## Zsh Autocomplete
  # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-## Golang
-export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-test -d "${GOPATH}" || mkdir "${GOPATH}"
-test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
-
 ## Bat
 export BAT_THEME="OneDark"
+
+## NVM
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export PATH="$HOME/.rbenv/bin:$PATH"

@@ -1,4 +1,4 @@
-local path = "http://192.168.1.103:8123/api/services/scene/turn_on"
+local path = "https://internetmoney.duckdns.org:8124/api/services/scene/turn_on"
 
 -- local token = ""
 
@@ -21,10 +21,10 @@ function screenChanged(watcher)
     hour = tonumber(os.date("%H"))
 
     -- Turn on Home Assistant Scene
-    if hour >= 17 and hour <= 22 then
-      hs.http.post(path, night_payload, headers)
-    else
+    if hour >= 12 and hour <= 19 then
       hs.http.post(path, day_payload, headers)
+    elseif hour <= 2 then
+      hs.http.post(path, night_payload, headers)
     end
   end
 end

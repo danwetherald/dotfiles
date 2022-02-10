@@ -47,7 +47,7 @@
   "languageserver": {
     "rescript": {
       "enable": true,
-      "module": "~/.config/nvim/plugged/vim-rescript/rescript-vscode/extension/server/out/server.js",
+      "module": "~/.config/nvim/plugged/vim-rescript/server/out/server.js",
       "args": ["--node-ipc"],
       "filetypes": ["rescript"],
       "rootPatterns": ["bsconfig.json"]
@@ -58,5 +58,10 @@
   "solargraph.autoformat": true,
   "solargraph.formatting": true,
   "solargraph.completion": true,
-  "solargraph.hover": true
+  "solargraph.hover": true,
+
+  "coc.source.around.enabled": false,
+  "suggest.languageSourcePriority": 99,
+  "tabnine.priority": 98,
+  "coc.source.buffer.priority": 50
 }

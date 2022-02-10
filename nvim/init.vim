@@ -226,7 +226,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
     nnoremap <silent> j gj
     nnoremap <silent> k gk
     nnoremap <silent> ^ g^
-    nnoremap <silent> $ g$
+    nnoremap <silent> $ g_
 
     " helpers for dealing with other people's code
     nmap \t :set ts=4 sts=4 sw=4 noet<cr>
@@ -468,7 +468,6 @@ call plug#begin('~/dotfiles/nvim/plugged')
         \ 'coc-css',
         \ 'coc-json',
         \ 'coc-tsserver',
-        \ 'coc-tslint-plugin',
         \ 'coc-git',
         \ 'coc-eslint',
         \ 'coc-pairs',
@@ -478,19 +477,15 @@ call plug#begin('~/dotfiles/nvim/plugged')
         \ 'coc-explorer',
         \ 'coc-diagnostic',
         \ 'coc-tailwindcss',
-        \ 'coc-reason',
         \ 'coc-tabnine',
         \ 'coc-solargraph',
-        \ 'coc-prisma',
         \ 'coc-html',
         \ 'coc-snippets',
-        \ 'coc-fzf-preview'
+        \ 'coc-fzf-preview',
+        \ 'coc-prisma'
         \ ]
 
         autocmd CursorHold * silent call CocActionAsync('highlight')
-
-        " coc-go
-        autocmd BufWritePre *.go :call CocAction('organizeImport')
 
         " coc-prettier
         command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -582,7 +577,7 @@ call plug#begin('~/dotfiles/nvim/plugged')
     " }}}
 
     " Rescript  {{{
-        Plug 'rescript-lang/vim-rescript', {'tag': 'v1.3.0'}
+        Plug 'rescript-lang/vim-rescript'
 
         autocmd BufWritePost *.res,*.resi silent RescriptFormat
 
@@ -595,6 +590,9 @@ call plug#begin('~/dotfiles/nvim/plugged')
     " TypeScript {{{
         Plug 'leafgarland/typescript-vim'
         Plug 'ianks/vim-tsx'
+        
+        autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+        autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
     " }}}
 
     " Prisma {{{

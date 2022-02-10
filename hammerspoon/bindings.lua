@@ -15,9 +15,9 @@ for key, app in pairs(applicationHotkeys) do
   end)
 end
 
-hs.hotkey.bind({}, "f8", function()
-  hs.spotify.playpause()
-end)
+-- hs.hotkey.bind({}, "f8", function()
+--   hs.spotify.playpause()
+-- end)
 
 hs.hotkey.bind(hyper, "escape", function()
   hs.reload()
