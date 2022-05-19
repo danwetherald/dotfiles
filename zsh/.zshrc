@@ -127,6 +127,9 @@ alias tmuxa='tmux  new-session -A'
 alias tmuxl='tmux list-sessions'
 alias gtbc="cd ~/Developer/BetterCart/refactor/bettercart"
 
+#One Off Alias
+alias fixm="defaults write com.apple.Dock appswitcher-all-displays -bool true; killall Dock"
+
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -158,3 +161,4 @@ export BAT_THEME="OneDark"
 # [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 # [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
