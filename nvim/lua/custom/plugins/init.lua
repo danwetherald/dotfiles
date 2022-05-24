@@ -13,5 +13,5 @@ return {
     config = function()
       require("custom.plugins.dashboard-nvim").setup()
     end,
-  }
+  },
 }
