@@ -1,7 +1,7 @@
-**/plugged
-nvim/undo/**.*
-**/undo
+nvim_old/plugged
+nvim_old/undo
 .DS_Store
-Spoons
-lang_servers
+hammerspoon/Spoons
+nvim_old/lang_servers
 replacements.txt
+nvim/plugin/packer_compiled.lua
