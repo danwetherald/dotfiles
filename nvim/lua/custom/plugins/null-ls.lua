@@ -8,7 +8,9 @@ local sources = {
   -- Javascript / All
   b.formatting.prettierd,
   b.formatting.eslint_d,
+  b.code_actions.eslint_d,
   b.diagnostics.tsc,
+  b.diagnostics.eslint_d,
 
   -- Lua
   b.formatting.stylua,
