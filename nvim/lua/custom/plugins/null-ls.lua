@@ -6,7 +6,7 @@ local sources = {
   b.formatting.rescript,
 
   -- Javascript / All
-  b.formatting.prettierd.with { filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "scss", "less", "html", "json", "jsonc", "yaml", "markdown", "graphql", "handlebars" } },
+  b.formatting.prettierd,
   b.formatting.eslint_d,
   b.diagnostics.tsc,
 
