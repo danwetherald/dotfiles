@@ -2,13 +2,12 @@ local null_ls = require "null-ls"
 local b = null_ls.builtins
 
 local sources = {
-  -- Javascript
-  b.formatting.eslint,
+  -- Rescript
   b.formatting.rescript,
-  b.formatting.prettierd.with { filetypes = { "html", "markdown", "css", "javascript" } },
-  b.formatting.deno_fmt,
 
-  b.code_actions.eslint_d,
+  -- Javascript / All
+  b.formatting.prettierd.with { filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "scss", "less", "html", "json", "jsonc", "yaml", "markdown", "graphql", "handlebars" } },
+  b.formatting.eslint_d,
   b.diagnostics.tsc,
 
   -- Lua
