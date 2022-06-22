@@ -12,6 +12,10 @@ local sources = {
   b.diagnostics.tsc,
   b.diagnostics.eslint_d,
 
+  -- Ruby
+  b.formatting.rubocop.with { extra_args = { "-A", "-f", "quiet", "--stderr", "--stdin", "$FILENAME" }},
+  b.diagnostics.rubocop,
+
   -- Lua
   b.formatting.stylua,
   b.diagnostics.luacheck.with { extra_args = { "--global vim" } },

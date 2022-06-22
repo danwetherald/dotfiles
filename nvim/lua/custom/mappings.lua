@@ -14,4 +14,11 @@ M.custom = {
    }
 }
 
+M.disabled = {
+  n = {
+    ["<ESC>"] = "",
+    ["<leader>n"] = ""
+  }
+}
+
 return M

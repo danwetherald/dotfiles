@@ -21,8 +21,11 @@ end
 
 local cmp_window = require "cmp.utils.window"
 
-function cmp_window:has_scrollbar()
-   return false
+cmp_window.info_ = cmp_window.info
+cmp_window.info = function(self)
+   local info = self:info_()
+   info.scrollable = false
+   return info
 end
 
 local options = {
@@ -93,6 +96,6 @@ local options = {
 }
 
 -- check for any override
-options = nvchad.load_override(options, "hrsh7th/nvim-cmp")
+options = require("core.utils").load_override(options, "hrsh7th/nvim-cmp")
 
 cmp.setup(options)
