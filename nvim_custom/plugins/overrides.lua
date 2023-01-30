@@ -56,7 +56,6 @@ M.mason = {
     -- rails
     "solargraph",
   },
-  automatic_installation = true
 }
 
 M.blankline = {

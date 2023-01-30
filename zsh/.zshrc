@@ -16,8 +16,6 @@ export ZSH=~/.oh-my-zsh
 #ZSH_THEME="agnoster"
 export ZSH_THEME="gnzh"
 
-export TERM=screen-256color
-
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of

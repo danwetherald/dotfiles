@@ -29,6 +29,7 @@ return {
   },
 
   ["goolord/alpha-nvim"] = {
+    disable = false,
     override_options = overrides.alpha,
   },
 
