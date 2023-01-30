@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Set PATH, MANPATH, etc., for Homebrew.
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -14,7 +21,7 @@ export ZSH=~/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="af-magic"
 #ZSH_THEME="agnoster"
-export ZSH_THEME="gnzh"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -96,8 +103,6 @@ plugins=(
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias sk="bundle exec sidekiq"
 alias mgr="bundle exec rake db:migrate"
 alias vi="nvim"
@@ -146,3 +151,7 @@ alias rest="timer 10m && terminal-notifier -message 'Pomodoro'\
         -title 'Break is over! Get back to work 😬'\
         -appIcon '~/Pictures/pumpkin.png'\
         -sound Crystal"
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
