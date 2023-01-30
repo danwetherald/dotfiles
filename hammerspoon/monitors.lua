@@ -1,6 +1,6 @@
 local path = "https://internetmoney.duckdns.org:8124/api/services/scene/turn_on"
 
--- local token = ""
+local token = ""
 
 local headers = {
   ["Authorization"] = "Bearer " .. token,

@@ -1,13 +1,9 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block, everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-source ~/.bash_profile
+# source ~/.bash_profile
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/usr/local/bin:/usr/bin:/bin:$PATH:/sbin
 
 # Path to your oh-my-zsh installation.
@@ -18,7 +14,9 @@ export ZSH=~/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="af-magic"
 #ZSH_THEME="agnoster"
-export ZSH_THEME=powerlevel10k/powerlevel10k
+export ZSH_THEME="gnzh"
+
+export TERM=screen-256color
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -73,8 +71,6 @@ plugins=(
   git
   tmux
 )
-
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -132,33 +128,23 @@ alias fixm="defaults write com.apple.Dock appswitcher-all-displays -bool true; k
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# export PATH="/usr/local/opt/ruby/bin:$PATH"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="$HOME/.rbenv/bin:$PATH"
-
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 autoload -Uz compinit
 compinit
 
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
 
-## Zsh Autocomplete
- # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 ## Bat
 export BAT_THEME="OneDark"
 
-## NVM
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
+alias adb='/Users/$USER/Library/Android/sdk/platform-tools/adb'
+
+alias work="timer 60m && terminal-notifier -message 'Pomodoro'\
+        -title 'Work Timer is up! Take a Break 😊'\
+        -appIcon '~/Pictures/pumpkin.png'\
+        -sound Crystal"
+
+alias rest="timer 10m && terminal-notifier -message 'Pomodoro'\
+        -title 'Break is over! Get back to work 😬'\
+        -appIcon '~/Pictures/pumpkin.png'\
+        -sound Crystal"
