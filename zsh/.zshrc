@@ -114,6 +114,8 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+eval "$(rbenv init - zsh)"
+
 # Vim Aliases
 alias vi="nvim"
 alias vim="nvim"
@@ -133,3 +135,4 @@ alias rest="timer 10m && terminal-notifier -message 'Pomodoro'\
         -title 'Break is over! Get back to work 😬'\
         -appIcon '~/Pictures/pumpkin.png'\
         -sound Crystal"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
