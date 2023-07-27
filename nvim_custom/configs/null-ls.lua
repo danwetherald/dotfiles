@@ -13,6 +13,7 @@ local sources = {
   formatting.rubocop,
   formatting.stylua,
   formatting.prettier,
+  formatting.erb_format,
 
   -- diagnostics
   diagnostics.rubocop,
@@ -21,7 +22,6 @@ local sources = {
 null_ls.setup {
   debug = true,
   sources = sources,
-
   on_attach = function(client, bufnr)
     if client.supports_method "textDocument/formatting" then
       vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
@@ -29,7 +29,7 @@ null_ls.setup {
         group = augroup,
         buffer = bufnr,
         callback = function()
-          vim.lsp.buf.format { bufnr = bufnr, timeout_ms = 5000 }
+          vim.lsp.buf.format { async = true, bufnr = bufnr, timeout_ms = 5000 }
         end,
       })
     end
