@@ -13,6 +13,6 @@ vim.opt.relativenumber = true
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
-vim.opt.updatecount = false
+-- vim.opt.updatecount = false
 
 vim.opt.backspace = { "indent", "eol,start" }
