@@ -33,7 +33,7 @@ local plugins = {
         "yaml-language-server",
 
         -- rails
-        "solargraph",
+        "ruby-lsp",
       }
     }
   },
