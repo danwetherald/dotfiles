@@ -139,6 +139,7 @@ alias rest="timer 10m && terminal-notifier -message 'Pomodoro'\
 alias gtbc="cd ~/Developer/better-cart/v3/better_cart"
 
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
