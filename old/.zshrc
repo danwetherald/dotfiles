@@ -1,0 +1,1 @@
+/Users/danwetherald/dotfiles/zsh/.zshrc
