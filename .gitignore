@@ -5,3 +5,10 @@ hammerspoon/Spoons
 nvim_old/lang_servers
 replacements.txt
 nvim/plugin/packer_compiled.lua
+# Common secret files (keep out of git)
+.env
+.env.*
+.secrets*
+.secret*
+.zshrc.local
+secrets*
