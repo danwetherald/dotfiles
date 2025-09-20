@@ -20,14 +20,41 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			-- Configure servers via the new vim.lsp.config API (nvim 0.11+)
+			-- Lua (for editing your Neovim config)
+			vim.lsp.config("lua_ls", {
+				capabilities = capabilities,
+				settings = {
+					Lua = {
+						runtime = { version = "LuaJIT" },
+						diagnostics = {
+							-- Prevent underline for global `vim`
+							globals = { "vim" },
+						},
+						workspace = {
+							-- Make server aware of Neovim runtime files
+							library = vim.api.nvim_get_runtime_file("", true),
+							checkThirdParty = false,
+						},
+						telemetry = { enable = false },
+					},
+				},
+			})
 			vim.lsp.config("ruby_lsp", {
 				capabilities = capabilities,
+				init_options = {
+					addonSettings = {
+						["Ruby LSP Rails"] = {
+							enablePendingMigrationsPrompt = false,
+						},
+					},
+				},
 			})
 			vim.lsp.config("tailwindcss", {
 				capabilities = capabilities,
 			})
 
 			-- Enable filetype-based activation for configured servers
+			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("ruby_lsp")
 			vim.lsp.enable("tailwindcss")
 
