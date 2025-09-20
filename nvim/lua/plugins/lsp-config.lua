@@ -20,6 +20,10 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			-- Configure servers via the new vim.lsp.config API (nvim 0.11+)
+			-- Explicitly disable the Stylua "LSP" so it doesn't auto-start
+			-- nvim-lspconfig ships a stylua adapter that runs `stylua --lsp`,
+			-- but we use Conform to run the CLI formatter instead.
+			vim.lsp.config("stylua", { enabled = false, filetypes = {} })
 			-- Lua (for editing your Neovim config)
 			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
@@ -27,15 +31,14 @@ return {
 					Lua = {
 						runtime = { version = "LuaJIT" },
 						diagnostics = {
-							-- Prevent underline for global `vim`
 							globals = { "vim" },
 						},
 						workspace = {
-							-- Make server aware of Neovim runtime files
 							library = vim.api.nvim_get_runtime_file("", true),
 							checkThirdParty = false,
 						},
 						telemetry = { enable = false },
+						format = { enable = false },
 					},
 				},
 			})
