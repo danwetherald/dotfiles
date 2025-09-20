@@ -13,4 +13,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+  -- Track latest commit for all plugins by default
+  defaults = { version = false },
+  -- Optional: background update checker so you know when to update
+  checker = { enabled = true, notify = false },
+})
