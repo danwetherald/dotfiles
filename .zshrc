@@ -13,7 +13,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
-
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -121,5 +120,15 @@ alias gbr='git branch | grep -v "master\|*" | xargs git branch -D'
 # To customize prompt, run `p10k configure` or edit ~/dotfiles/.p10k.zsh.
 [[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
 
-## Load ruby versions
+# Load ruby versions
 eval "$(rbenv init - zsh)"
+
+
+# bun completions
+[ -s "/Users/danwetherald/.bun/_bun" ] && source "/Users/danwetherald/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+. "$HOME/.local/bin/env"
