@@ -41,7 +41,17 @@ return {
 			})
 			vim.lsp.config("ruby_lsp", {
 				capabilities = capabilities,
+				cmd = (function()
+					if vim.fn.filereadable("bin/ruby-lsp") == 1 then
+						return { "bin/ruby-lsp" }
+					end
+					if vim.fn.executable("bundle") == 1 and vim.uv.fs_stat("Gemfile") then
+						return { "bundle", "exec", "ruby-lsp" }
+					end
+					return { "ruby-lsp" }
+				end)(),
 				init_options = {
+					formatter = "syntax_tree",
 					addonSettings = {
 						["Ruby LSP Rails"] = {
 							enablePendingMigrationsPrompt = false,
