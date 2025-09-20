@@ -18,15 +18,18 @@ return {
 		lazy = false,
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local lspconfig = require("lspconfig")
 
-			lspconfig.ruby_lsp.setup({
+			-- Configure servers via the new vim.lsp.config API (nvim 0.11+)
+			vim.lsp.config("ruby_lsp", {
+				capabilities = capabilities,
+			})
+			vim.lsp.config("tailwindcss", {
 				capabilities = capabilities,
 			})
 
-			lspconfig.tailwindcss.setup({
-				capabilities = capabilities,
-			})
+			-- Enable filetype-based activation for configured servers
+			vim.lsp.enable("ruby_lsp")
+			vim.lsp.enable("tailwindcss")
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})

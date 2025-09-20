@@ -123,7 +123,6 @@ alias gbr='git branch | grep -v "master\|*" | xargs git branch -D'
 # Load ruby versions
 eval "$(rbenv init - zsh)"
 
-
 # bun completions
 [ -s "/Users/danwetherald/.bun/_bun" ] && source "/Users/danwetherald/.bun/_bun"
 
