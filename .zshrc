@@ -117,9 +117,6 @@ alias gbr='git branch | grep -v "master\|*" | xargs git branch -D'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# To customize prompt, run `p10k configure` or edit ~/dotfiles/.p10k.zsh.
-[[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
-
 # Use mise to manage language runtimes
 # Drop stale rbenv paths now that mise manages Ruby
 path=(${path:#$HOME/.rbenv/shims})
@@ -128,8 +125,13 @@ if [[ -z "$TMPDIR" || ! -w "$TMPDIR" ]]; then
   export TMPDIR="$HOME/tmp"
   mkdir -p "$TMPDIR"
 fi
-eval "$(~/.local/bin/mise activate zsh)"
-eval "$(~/.local/bin/mise completion zsh)"
+if [[ -x "$HOME/.local/bin/mise" ]]; then
+  eval "$("$HOME/.local/bin/mise" activate zsh)"
+  eval "$("$HOME/.local/bin/mise" completion zsh)"
+elif command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+  eval "$(mise completion zsh)"
+fi
 
 # bun completions
 [ -s "/Users/danwetherald/.bun/_bun" ] && source "/Users/danwetherald/.bun/_bun"
@@ -138,4 +140,4 @@ eval "$(~/.local/bin/mise completion zsh)"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-. "$HOME/.local/bin/env"
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"

@@ -1,3 +1,4 @@
+require("hs.ipc")
 require("windows")
 -- require "wifi"
 -- require "brightness"
